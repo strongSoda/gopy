@@ -70,7 +70,10 @@ Any form of contribution is welcome :smile:
 
 If this project helps you, consider supporting
 
-<a href="https://www.patreon.com/bePatron?u=17066721" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+
+<a href="https://www.patreon.com/bePatron?u=17066721">
+  <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
+</a>
 
 #### OR 
 
