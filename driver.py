@@ -14,4 +14,4 @@
 
 """test for bsearch"""
 # from gopy.sorting.bubble import sort
-# print(sort([1,2,3,4,5,6,7]))
+# print(sort([8,7,6,5,4,3,2,1]))
