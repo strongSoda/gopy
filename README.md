@@ -56,10 +56,10 @@ Not Found
 ### List of implementations
 
 - [sorting](/gopy/sorting/)
-    - [bubble](/gopy/sorting/bubble/)
+    - [bubble](/gopy/sorting/bubble.py/)
 - [searching](/gopy/search/)
-    - [linear search](/gopy/search/lsearch/)
-    - [binary search](/gopy/search/bsearch/)
+    - [linear search](/gopy/search/lsearch.py/)
+    - [binary search](/gopy/search/bsearch.py/)
 
 
 ### Contributing
