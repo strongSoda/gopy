@@ -76,3 +76,7 @@
 """test for shell sort"""
 # from gopy.sorting.shell import sort
 # print(sort([8,7,6,5,4,3,2,1]))
+
+"""test for bogo sort"""
+# from gopy.sorting.bogo import sort
+# print(sort([8,7,6,5,4,3,2,1]))
