@@ -8,10 +8,15 @@
 """test for bsearch"""
 # from gopy.search.bsearch import search
 
-# l = [1,2,3,4,5,6,7,8,9]
+# l = [1,2,3,4,5,6,7,8,9]rt search
+# print(search(4,[1,3,4,5]))
 
 # print(search(1000000000,l))
 
 """test for bsearch"""
 # from gopy.sorting.bubble import sort
 # print(sort([8,7,6,5,4,3,2,1]))
+
+"""test for ternary search"""
+# from gopy.search.ternary import search
+# print(search(4,[1,3,4,5]))
