@@ -1,7 +1,6 @@
-"""Linear Search Implementation
+"""Binary Search Implementation
 Takes in an item & array & returns the index of match
 """
-
 def search(item,array):
     beg = 0
     end = len(array)

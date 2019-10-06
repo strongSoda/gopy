@@ -13,6 +13,10 @@
 
 # print(search(1000000000,l))
 
+"""test for jumpsearch"""
+# from gopy.search.jumpSearch import search
+# print(search(3,[1,2,3,4,5,6]))
+
 """test for ternary search"""
 # from gopy.search.ternary import search
 # print(search(4,[1,3,4,5]))
