@@ -11,7 +11,7 @@ def long_description():
 
 
 setup(name='gopy',
-      version='0.6.2',
+      version='0.6.3',
       description='Python Data Structures and Algorithms',
       long_description=long_description(),
       long_description_content_type="text/markdown",
