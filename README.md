@@ -1,12 +1,12 @@
 ## Python Data Structures and Algorithms
 
-- [Installation](install)
-- [Usage](usage)
-- [For Education](for-education)
-- [For Analysis](for-analysis)
-- [List of Implementations](list-of-implementations)
-- [Contribute](contribute)
-- [Support](support)
+- [Installation](#install)
+- [Usage](#usage)
+- [For Education](#for-education)
+- [For Analysis](#for-analysis)
+- [List of Implementations](#list-of-implementations)
+- [Contribute](#contribute)
+- [Support](#support)
 
 ### Install
 
