@@ -8,6 +8,9 @@ Ternary search, like binary search, is based on divide-and-conquer algorithm.
 It is divided into 3 parts (where in binary search 2 parts) and then determines in which part the element exists.
 """
 
+import cProfile
+import re
+
 def ternary_search(left_index, right_index, search_key, array):
     if left_index <= right_index:
         mid_index1 = left_index + (right_index - left_index)//3
@@ -29,3 +32,10 @@ def search(item,array):
     left_index = 0
     right_index = len(array) - 1
     return ternary_search(left_index, right_index, item, array)
+
+def profile():
+    '''profiling input 
+    search(10,[0,1,2,3,4,5,6,7,8,9,10])
+    '''
+    cProfile.run('search(10,[0,1,2,3,4,5,6,7,8,9,10])')
+    

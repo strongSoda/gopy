@@ -85,6 +85,11 @@
 # from gopy.sorting.bogo import sort
 # print(sort([8,7,6,5,4,3,2,1]))
 
-"""test for quick sort"""
-import gopy.sorting.quick as quick
-print(quick.__doc__)
+"""test for documentation"""
+# import gopy.sorting.quick as quick
+# print(quick.__doc__)
+
+"""test for profiling"""
+from gopy.search.ternary import *
+print(profile.__doc__)
+
