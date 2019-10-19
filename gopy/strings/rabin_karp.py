@@ -1,87 +1,44 @@
-# Numbers of alphabet which we call base
-alphabet_size = 256
-# Modulus to hash a string
-modulus = 1000003
+'''
+The Rabin-Karp string matching algorithm calculates a hash value for the pattern, 
+as well as for each M-character subsequences of text to be compared. If the hash 
+values are unequal, the algorithm will determine the hash value for next M-character 
+sequence. If the hash values are equal, the algorithm will analyze the pattern and the
+M-character sequence. In this way, there is only one comparison per text subsequence,
+and character matching is only required when the hash values match.
 
+RABIN-KARP-MATCHER (T, P, d, q)
+ 1. n ← length [T]
+ 2. m  ← length [P]
+ 3. h  ←  dm-1 mod q
+ 4. p ←  0
+ 5. t0 ←  0
+ 6. for i ← 1 to m
+ 7. do p ←  (dp + P[i]) mod q
+ 8. t0 ← (dt0+T [i]) mod q
+ 9. for s  ←  0 to n-m
+ 10. do if p = ts
+ 11. then if P [1.....m] = T [s+1.....s + m]
+ 12. then "Pattern occurs with shift" s
+ 13. If s < n-m
+ 14. then ts+1 ←  (d (ts-T [s+1]h)+T [s+m+1])mod q
 
-def rabin_karp(pattern, text):
-    """
-    The Rabin-Karp Algorithm for finding a pattern within a piece of text
-    with complexity O(nm), most efficient when it is used with multiple patterns
-    as it is able to check if any of a set of patterns match a section of text in o(1) given the precomputed hashes.
+omplexity:
+The running time of RABIN-KARP-MATCHER in the worst case scenario O ((n-m+1) m but it has a
+good average case running time. If the expected number of strong shifts is small O (1) and 
+prime q is chosen to be quite large, then the Rabin-Karp algorithm can be expected to run in 
+time O (n+m) plus the time to require to process spurious hits.
 
-    This will be the simple version which only assumes one pattern is being searched for but it's not hard to modify
+'''
+def match(text,pat):
+    m = len(text)
+    n = len(pat)
 
-    1) Calculate pattern hash
-
-    2) Step through the text one character at a time passing a window with the same length as the pattern
-        calculating the hash of the text within the window compare it with the hash of the pattern. Only testing
-        equality if the hashes match
-    """
-    p_len = len(pattern)
-    t_len = len(text)
-    if p_len > t_len:
-        return False
-
-    p_hash = 0
-    text_hash = 0
-    modulus_power = 1
-
-    # Calculating the hash of pattern and substring of text
-    for i in range(p_len):
-        p_hash = (ord(pattern[i]) + p_hash * alphabet_size) % modulus
-        text_hash = (ord(text[i]) + text_hash * alphabet_size) % modulus
-        if i == p_len - 1:
-            continue
-        modulus_power = (modulus_power * alphabet_size) % modulus
-
-    for i in range(0, t_len - p_len + 1):
-        if text_hash == p_hash and text[i : i + p_len] == pattern:
-            return True
-        if i == t_len - p_len:
-            continue
-        # Calculating the ruling hash
-        text_hash = (
-            (text_hash - ord(text[i]) * modulus_power) * alphabet_size
-            + ord(text[i + p_len])
-        ) % modulus
-    return False
-
-
-def test_rabin_karp():
-    """
-    >>> test_rabin_karp()
-    Success.
-    """
-    # Test 1)
-    pattern = "abc1abc12"
-    text1 = "alskfjaldsabc1abc1abc12k23adsfabcabc"
-    text2 = "alskfjaldsk23adsfabcabc"
-    assert rabin_karp(pattern, text1) and not rabin_karp(pattern, text2)
-
-    # Test 2)
-    pattern = "ABABX"
-    text = "ABABZABABYABABX"
-    assert rabin_karp(pattern, text)
-
-    # Test 3)
-    pattern = "AAAB"
-    text = "ABAAAAAB"
-    assert rabin_karp(pattern, text)
-
-    # Test 4)
-    pattern = "abcdabcy"
-    text = "abcxabcdabxabcdabcdabcy"
-    assert rabin_karp(pattern, text)
-
-    # Test 5)
-    pattern = "Lü"
-    text = "Lüsai"
-    assert rabin_karp(pattern, text)
-    pattern = "Lue"
-    assert not rabin_karp(pattern, text)
-    print("Success.")
-
-
-if __name__ == "__main__":
-    test_rabin_karp()
+    p_hash = hash(pat)
+    pos = []
+    for i in range(m-(n-1)):
+        if hash(text[i:i+n])==p_hash and text[i:i+n] == pat:
+            pos.append(i)
+    if len(pos):
+        return pos
+    else:
+        return "No Match Found"

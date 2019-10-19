@@ -90,6 +90,18 @@
 # print(quick.__doc__)
 
 """test for profiling"""
-from gopy.search.ternary import *
-print(profile.__doc__)
+# from gopy.search.ternary import *
+# print(profile.__doc__)
 
+
+"""test for rabin_karp"""
+# from gopy.strings.rabin_karp import match
+# print(match("ababcdcdabaabcaabd","ggg"))
+
+"""test for naive_string_match"""
+# from gopy.strings.naive_string_match import match
+# print(match("ababcdcdabaabcaabd","ab"))
+
+"""test for knuth_morris_pratt"""
+# from gopy.strings.knuth_morris_pratt import match
+# print(match("ABABDABACDABABCABAB","A"))
