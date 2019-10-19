@@ -1,5 +1,33 @@
-"""Radix Sort Implementation
-Takes in an array & returns the sorted array
+"""
+Radix sort is a small method that many people intuitively use when alphabetizing a large list 
+of names. Specifically, the list of names is first sorted according to the first letter of 
+each name, that is, the names are arranged in 26 classes.
+
+Intuitively, one might want to sort numbers on their most significant digit. However, Radix 
+sort works counter-intuitively by sorting on the least significant digits first. On the first 
+pass, all the numbers are sorted on the least significant digit and combined in an array. 
+Then on the second pass, the entire numbers are sorted again on the second least significant 
+digits and combined in an array and so on.
+
+Algorithm: Radix-Sort (list, n) 
+shift = 1 
+for loop = 1 to keysize do 
+   for entry = 1 to n do 
+      bucketnumber = (list[entry].key / shift) mod 10 
+      append (bucket[bucketnumber], list[entry]) 
+   list = combinebuckets() 
+   shift = shift * 10 
+
+### Analysis
+Each key is looked at once for each digit (or letter if the keys are alphabetic) of the longest 
+key. Hence, if the longest key has m digits and there are n keys, radix sort has order O(m.n).
+
+However, if we look at these two values, the size of the keys will be relatively small when 
+compared to the number of keys. For example, if we have six-digit keys, we could have a 
+million different records.
+
+Here, we see that the size of the keys is not significant, and this algorithm is of linear 
+complexity O(n).
 """
 def radix_sort(array, base=10):
     if array == []:

@@ -77,79 +77,89 @@ print(quick.__doc__)
 Output: 
 
 ```markdown
-Quick Sort Implementation
-Takes in an array & returns the sorted array
+Quick sort is a highly efficient sorting algorithm and is based on partitioning of array of data 
+into smaller arrays. A large array is partitioned into two arrays one of which holds values 
+smaller than the specified value, say pivot, based on which the partition is made and another 
+array holds values greater than the pivot value.
 
-## Documentation
+Quick sort partitions an array and then calls itself recursively twice to sort the two resulting 
+subarrays. This algorithm is quite efficient for large-sized data sets as its average and worst 
+case complexity are of Ο(n2), where n is the number of items.
 
-**Task**
+### Quick Sort Pivot Algorithm
 
-Sort an array (or list) elements using the   quicksort   algorithm.
+Based on our understanding of partitioning in quick sort, we will now try to write an algorithm for 
+it, which is as follows.
 
-The elements must have a   strict weak order   and the index of the array can be of any discrete type.
+Step 1 − Choose the highest index value has pivot
+Step 2 − Take two variables to point left and right of the list excluding pivot
+Step 3 − left points to the low index
+Step 4 − right points to the high
+Step 5 − while value at left is less than pivot move right
+Step 6 − while value at right is greater than pivot move left
+Step 7 − if both step 5 and step 6 does not match swap left and right
+Step 8 − if left ≥ right, the point where they met is new pivot
 
-For languages where this is not possible, sort an array of integers.
+### Quick Sort Pivot Pseudocode
 
+The pseudocode for the above algorithm can be derived as −
 
-Quicksort, also known as   partition-exchange sort,   uses these steps.
+```python
+function partitionFunc(left, right, pivot)
+   leftPointer = left
+   rightPointer = right - 1
 
-  - Choose any element of the array to be the pivot.
-  - Divide all other elements (except the pivot) into two partitions.
-  - All elements less than the pivot must be in the first partition.
-  - All elements greater than the pivot must be in the second partition.
-  - Use recursion to sort both partitions.
-  - Join the first sorted partition, the pivot, and the second sorted partition.
+   while True do
+      while A[++leftPointer] < pivot do
+         //do-nothing            
+      end while
+		
+      while rightPointer > 0 && A[--rightPointer] > pivot do
+         //do-nothing         
+      end while
+		
+      if leftPointer >= rightPointer
+         break
+      else                
+         swap leftPointer,rightPointer
+      end if
+		
+   end while 
+	
+   swap leftPointer,right
+   return leftPointer
+	
+end function
+```
 
-The best pivot creates partitions of equal length (or lengths differing by   1).
+### Quick Sort Algorithm
 
-The worst pivot creates an empty partition (for example, if the pivot is the first or last element of a sorted array).
+Using pivot algorithm recursively, we end up with smaller possible partitions. Each partition is 
+then processed for quick sort. We define recursive algorithm for quicksort as follows −
 
-The run-time of Quicksort ranges from   O(n log n)   with the best pivots, to   O(n2)   with the worst pivots, where   n   is the number of elements in the array.
+Step 1 − Make the right-most index value pivot
+Step 2 − partition the array using pivot value
+Step 3 − quicksort left partition recursively
+Step 4 − quicksort right partition recursively
 
+### Quick Sort Pseudocode
 
-This is a simple quicksort algorithm, adapted from Wikipedia.
+To get more into it, let see the pseudocode for quick sort algorithm −
 
-function quicksort(array)
-    less, equal, greater := three empty arrays
-    if length(array) > 1  
-        pivot := select any element of array
-        for each x in array
-            if x < pivot then add x to less
-            if x = pivot then add x to equal
-            if x > pivot then add x to greater
-        quicksort(less)
-        quicksort(greater)
-        array := concatenate(less, equal, greater)
+```python
+procedure quickSort(left, right)
 
-A better quicksort algorithm works in place, by swapping elements within the array, to avoid the memory allocation of more arrays.
-
-
-function quicksort(array)
-    if length(array) > 1
-        pivot := select any element of array
-        left := first index of array
-        right := last index of array
-        while left ≤ right
-            while array[left] < pivot
-                left := left + 1
-            while array[right] > pivot
-                right := right - 1
-            if left ≤ right
-                swap array[left] with array[right]
-                left := left + 1
-                right := right - 1
-        quicksort(array from first index to right)
-        quicksort(array from left to last index)
-
-Quicksort has a reputation as the fastest sort. Optimized variants of quicksort are common features of many languages and libraries. One often contrasts quicksort with   merge sort,   because both sorts have an average time of   O(n log n).
-
-"On average, mergesort does fewer comparisons than quicksort, so it may be better when complicated comparison routines are used. Mergesort also takes advantage of pre-existing order, so it would be favored for using sort() to merge several sorted arrays. On the other hand, quicksort is often faster for small arrays, and on arrays of a few distinct values, repeated many times." — http://perldoc.perl.org/sort.html
-Quicksort is at one end of the spectrum of divide-and-conquer algorithms, with merge sort at the opposite end.
-
-Quicksort is a conquer-then-divide algorithm, which does most of the work during the partitioning and the recursive calls. The subsequent reassembly of the sorted partitions involves trivial effort.
-Merge sort is a divide-then-conquer algorithm. The partioning happens in a trivial way, by splitting the input array in half. Most of the work happens during the recursive calls and the merge phase.
-
-With quicksort, every element in the first partition is less than or equal to every element in the second partition. Therefore, the merge phase of quicksort is so trivial that it needs no mention!
+   if right-left <= 0
+      return
+   else     
+      pivot = A[right]
+      partition = partitionFunc(left, right, pivot)
+      quickSort(left,partition-1)
+      quickSort(partition+1,right)    
+   end if		
+   
+end procedure
+```
 ```
 
 ### For Analysis
