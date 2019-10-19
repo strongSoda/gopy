@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>counting.py</title>
+  <link rel="stylesheet" href="../../pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>counting.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <p>Counting sort is an efficient algorithm for sorting an array of elements that each have 
+a nonnegative integer key, for example, an array, sometimes called a list, of positive 
+integers could have keys that are just the value of the integer as the key, or a list 
+of words could have keys assigned to them by some scheme mapping the alphabet to 
+integers (to sort in alphabetical order, for instance). Unlike other sorting algorithms, 
+such as mergesort, counting sort is an integer sorting algorithm, not a comparison based 
+algorithm. While any comparison based sorting algorithm requires Omega(nlgn)Ω(nlgn) 
+comparisons, counting sort has a running time of Theta(n)Θ(n) when the length of the 
+input list is not much smaller than the largest key value, kk, in the list. Counting 
+sort can be used as a subroutine for other, more powerful, sorting algorithms such as 
+radix sort</p>
+<h3>Complexity of Counting Sort</h3>
+<p>Counting sort has a O(k+n)O(k+n) running time.</p>
+<p>The first loop goes through AA, which has nn elements. This step has a O(n)O(n) running 
+time. The second loop iterates over kk, so this step has a running time of O(k)O(k). The 
+third loop iterates through AA, so again, this has a running time of O(n)O(n). Therefore, 
+the counting sort algorithm has a running time of O(k+n)O(k+n).</p>
+<p>Counting sort is efficient if the range of input data, kk, is not significantly greater 
+than the number of objects to be sorted, nn.</p>
+<p>Counting sort is a stable sort with a space complexity of <strong>O(k + n)O(k+n).</strong></p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">counting_sort</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">largest</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">largest</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)):</span>
+        <span class="n">c</span><span class="p">[</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+</span> <span class="mi">1</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <p>Find the last index for each element</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1"># to decrement each element for zero-based indexing</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">largest</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+ 
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <p>Though it is not required here,
+it becomes necessary to reverse the list
+when this function needs to be a stable sort</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="n">x</span><span class="p">]]</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="n">c</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+ 
+    <span class="k">return</span> <span class="n">result</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">counting_sort</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">array</span><span class="p">))</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>

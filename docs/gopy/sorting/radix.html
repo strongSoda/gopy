@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>radix.py</title>
+  <link rel="stylesheet" href="../../pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>radix.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <p>Radix sort is a small method that many people intuitively use when alphabetizing a large list 
+of names. Specifically, the list of names is first sorted according to the first letter of 
+each name, that is, the names are arranged in 26 classes.</p>
+<p>Intuitively, one might want to sort numbers on their most significant digit. However, Radix 
+sort works counter-intuitively by sorting on the least significant digits first. On the first 
+pass, all the numbers are sorted on the least significant digit and combined in an array. 
+Then on the second pass, the entire numbers are sorted again on the second least significant 
+digits and combined in an array and so on.</p>
+<p>Algorithm: Radix-Sort (list, n) 
+shift = 1 
+for loop = 1 to keysize do 
+   for entry = 1 to n do 
+      bucketnumber = (list[entry].key / shift) mod 10 
+      append (bucket[bucketnumber], list[entry]) 
+   list = combinebuckets() 
+   shift = shift * 10 </p>
+<h3>Analysis</h3>
+<p>Each key is looked at once for each digit (or letter if the keys are alphabetic) of the longest 
+key. Hence, if the longest key has m digits and there are n keys, radix sort has order O(m.n).</p>
+<p>However, if we look at these two values, the size of the keys will be relatively small when 
+compared to the number of keys. For example, if we have six-digit keys, we could have a 
+million different records.</p>
+<p>Here, we see that the size of the keys is not significant, and this algorithm is of linear 
+complexity O(n).</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">radix_sort</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">array</span> <span class="o">==</span> <span class="p">[]:</span>
+        <span class="k">return</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">key_factory</span><span class="p">(</span><span class="n">digit</span><span class="p">,</span> <span class="n">base</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="k">def</span> <span class="nf">key</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">((</span><span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">//</span><span class="p">(</span><span class="n">base</span><span class="o">**</span><span class="n">digit</span><span class="p">))</span> <span class="o">%</span> <span class="n">base</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">key</span>
+    <span class="n">largest</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+    <span class="n">exp</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">base</span><span class="o">**</span><span class="n">exp</span> <span class="o">&lt;=</span> <span class="n">largest</span><span class="p">:</span>
+        <span class="n">array</span> <span class="o">=</span> <span class="n">counting_sort</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">base</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">key_factory</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">base</span><span class="p">))</span>
+        <span class="n">exp</span> <span class="o">=</span> <span class="n">exp</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">array</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">counting_sort</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">largest</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">largest</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)):</span>
+        <span class="n">c</span><span class="p">[</span><span class="n">key</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="n">key</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">i</span><span class="p">)]</span> <span class="o">+</span> <span class="mi">1</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      <p>Find the last index for each element</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1"># to decrement each element for zero-based indexing</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">largest</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+ 
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="n">key</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">i</span><span class="p">)]]</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">c</span><span class="p">[</span><span class="n">key</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="n">key</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">i</span><span class="p">)]</span> <span class="o">-</span> <span class="mi">1</span>
+ 
+    <span class="k">return</span> <span class="n">result</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">radix_sort</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>

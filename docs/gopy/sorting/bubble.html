@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>bubble.py</title>
+  <link rel="stylesheet" href="../../pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>bubble.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <p>Bubble Sort is a simple algorithm which is used to sort a given set of n elements 
+provided in form of an array with n number of elements. Bubble Sort compares all 
+the element one by one and sort them based on their values.</p>
+<p>If the given array has to be sorted in ascending order, then bubble sort will start 
+by comparing the first element of the array with the second element, if the first 
+element is greater than the second element, it will swap both the elements, and then 
+move on to compare the second and the third element, and so on.</p>
+<p>If we have total n elements, then we need to repeat this process for n-1 times.</p>
+<p>It is known as bubble sort, because with every complete iteration the largest element 
+in the given array, bubbles up towards the last place or the highest index, just like 
+a water bubble rises up to the water surface.</p>
+<p>Sorting takes place by stepping through all the elements one-by-one and comparing it 
+with the adjacent element and swapping them if required.</p>
+<h3>Implementing Bubble Sort Algorithm</h3>
+<p>Following are the steps involved in bubble sort(for sorting a given array in ascending order):</p>
+<ul>
+<li>Starting with the first element(index = 0), compare the current element with the next element of the array.</li>
+<li>If the current element is greater than the next element of the array, swap them.</li>
+<li>If the current element is less than the next element, move to the next element. Repeat Step 1.</li>
+</ul>
+<h3>Following are the Time and Space complexity for the Bubble Sort algorithm.</h3>
+<p>Worst Case Time Complexity [ Big-O ]: O(n2)
+Best Case Time Complexity [Big-omega]: O(n)
+Average Time Complexity [Big-theta]: O(n2)
+Space Complexity: O(1)</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        
+    <span class="k">return</span> <span class="n">array</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>
