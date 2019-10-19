@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>insertion.py</title>
+  <link rel="stylesheet" href="../../pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>insertion.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <p>This is an in-place comparison-based sorting algorithm. Here, a sub-list is 
+maintained which is always sorted. For example, the lower part of an array 
+is maintained to be sorted. An element which is to be &lsquo;insert&rsquo;ed in this 
+sorted sub-list, has to find its appropriate place and then it has to be 
+inserted there. Hence the name, insertion sort.</p>
+<p>The array is searched sequentially and unsorted items are moved and inserted 
+into the sorted sub-list (in the same array). This algorithm is not suitable 
+for large data sets as its average and worst case complexity are of Ο(n2), 
+where n is the number of items.</p>
+<h3>Algorithm</h3>
+<p>Now we have a bigger picture of how this sorting technique works, so we can derive 
+simple steps by which we can achieve insertion sort.</p>
+<p>Step 1 − If it is the first element, it is already sorted. return 1;
+Step 2 − Pick next element
+Step 3 − Compare with all elements in the sorted sub-list
+Step 4 − Shift all the elements in the sorted sub-list that is greater than the 
+         value to be sorted
+Step 5 − Insert the value
+Step 6 − Repeat until list is sorted</p>
+<h4>Pseudocode</h4>
+<pre><code class="python">procedure insertionSort( A : array of items )
+   int holePosition
+   int valueToInsert
+
+   for i = 1 to length(A) inclusive do:
+
+      /* select value to be inserted */
+      valueToInsert = A[i]
+      holePosition = i
+
+      /*locate hole position for the element to be inserted */
+
+      while holePosition &gt; 0 and A[holePosition-1] &gt; valueToInsert do:
+         A[holePosition] = A[holePosition-1]
+         holePosition = holePosition -1
+      end while
+
+      /* insert the number at hole position */
+      A[holePosition] = valueToInsert
+
+   end for
+end procedure
+</code></pre>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)):</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">temp</span> <span class="o">&lt;</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="p">]):</span>
+            <span class="n">array</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">array</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span>
+    <span class="k">return</span> <span class="n">array</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>

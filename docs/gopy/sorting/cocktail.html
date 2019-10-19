@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>cocktail.py</title>
+  <link rel="stylesheet" href="../../pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>cocktail.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <p>Cocktail sort is the variation of Bubble Sort which traverses the list in both 
+directions alternatively. It is different from bubble sort in the sense that, 
+bubble sort traverses the list in forward direction only, while this algorithm 
+traverses in forward as well as backward direction in one iteration.</p>
+<h3>Algorithm</h3>
+<p>In cocktail sort, one iteration consists of two stages:</p>
+<ul>
+<li>The first stage loop through the array like bubble sort from left to right. The adjacent elements are compared and if left element is greater than the right element, then we swap those elements. The largest element of the list is placed at the end of the array in the forward pass.</li>
+<li>The second stage loop through the array from the right most unsorted element to the left. The adjacent elements are compared and if right element is smaller than the left element then, we swap those elements. The smallest element of the list is placed at the beginning of the array in backward pass.</li>
+</ul>
+<p>The process continues until the list becomes unsorted.</p>
+<h3>Complexity</h3>
+<p><strong>Complexity</strong>          <strong>Best Case</strong>   <strong>Average Case</strong>    <strong>Worst Case</strong>
+<strong>Time Complexity</strong>         O(n2)           O(n2)               O(n2)
+<strong>Space Complexity</strong>        O(1)            O(1)                O(1)</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cocktail_shaker_sort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">swap</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+        <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+ 
+    <span class="n">upper</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">lower</span> <span class="o">=</span> <span class="mi">0</span>
+ 
+    <span class="n">no_swap</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="k">while</span> <span class="p">(</span><span class="ow">not</span> <span class="n">no_swap</span> <span class="ow">and</span> <span class="n">upper</span> <span class="o">-</span> <span class="n">lower</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">no_swap</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                <span class="n">swap</span><span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+                <span class="n">no_swap</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">upper</span> <span class="o">=</span> <span class="n">upper</span> <span class="o">-</span> <span class="mi">1</span>
+ 
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">upper</span><span class="p">,</span> <span class="n">lower</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                <span class="n">swap</span><span class="p">(</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+                <span class="n">no_swap</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">lower</span> <span class="o">=</span> <span class="n">lower</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">array</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">cocktail_shaker_sort</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>

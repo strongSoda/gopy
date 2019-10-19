@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>merge.py</title>
+  <link rel="stylesheet" href="../../pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>merge.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Merge sort is a sorting technique based on divide and conquer technique. With worst-case time </span>
+<span class="sd">complexity being Ο(n log n), it is one of the most respected algorithms.</span>
+
+<span class="sd">Merge sort first divides the array into equal halves and then combines them in a sorted manner.</span>
+<span class="sd">#DIVIDER</span>
+
+<span class="sd">Merge sort keeps on dividing the list into equal halves until it can no more be divided. </span>
+<span class="sd">By definition, if it is only one element in the list, it is sorted. Then, merge sort </span>
+<span class="sd">combines the smaller sorted lists keeping the new list sorted too.</span>
+
+<span class="sd">Step 1 − if it is only one element in the list it is already sorted, return.</span>
+<span class="sd">Step 2 − divide the list recursively into two halves until it can no more be divided.</span>
+<span class="sd">Step 3 − merge the smaller lists into new list in sorted order.</span>
+<span class="sd">#DIVIDER</span>
+
+<span class="sd">We shall now see the pseudocodes for merge sort functions. As our algorithms point out </span>
+<span class="sd">two main functions − divide &amp; merge.</span>
+
+<span class="sd">Merge sort works with recursion and we shall see our implementation in the same way.</span>
+
+<span class="sd">```python</span>
+<span class="sd">procedure mergesort( var a as array )</span>
+<span class="sd">   if ( n == 1 ) return a</span>
+
+<span class="sd">   var l1 as array = a[0] ... a[n/2]</span>
+<span class="sd">   var l2 as array = a[n/2+1] ... a[n]</span>
+
+<span class="sd">   l1 = mergesort( l1 )</span>
+<span class="sd">   l2 = mergesort( l2 )</span>
+
+<span class="sd">   return merge( l1, l2 )</span>
+<span class="sd">end procedure</span>
+
+<span class="sd">procedure merge( var a as array, var b as array )</span>
+
+<span class="sd">   var c as array</span>
+<span class="sd">   while ( a and b have elements )</span>
+<span class="sd">      if ( a[0] &gt; b[0] )</span>
+<span class="sd">         add b[0] to the end of c</span>
+<span class="sd">         remove b[0] from b</span>
+<span class="sd">      else</span>
+<span class="sd">         add a[0] to the end of c</span>
+<span class="sd">         remove a[0] from a</span>
+<span class="sd">      end if</span>
+<span class="sd">   end while</span>
+<span class="sd">   </span>
+<span class="sd">   while ( a has elements )</span>
+<span class="sd">      add a[0] to the end of c</span>
+<span class="sd">      remove a[0] from a</span>
+<span class="sd">   end while</span>
+<span class="sd">   </span>
+<span class="sd">   while ( b has elements )</span>
+<span class="sd">      add b[0] to the end of c</span>
+<span class="sd">      remove b[0] from b</span>
+<span class="sd">   end while</span>
+<span class="sd">   </span>
+<span class="sd">   return c</span>
+<span class="sd">	</span>
+<span class="sd">end procedure</span>
+<span class="sd">```</span>
+<span class="sd">&#39;&#39;&#39;</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <h2>Algorithm</h2>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Sorts the list from indexes start to end - 1 inclusive.&#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">start</span> <span class="o">+</span> <span class="n">end</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span>
+        <span class="n">merge_sort</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">mid</span><span class="p">)</span>
+        <span class="n">merge_sort</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+        <span class="n">merge_list</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">array</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <h2>Pseudocode</h2>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">merge_list</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">mid</span><span class="p">]</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">mid</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">start</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">start</span> <span class="o">+</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">mid</span> <span class="ow">and</span> <span class="n">mid</span> <span class="o">+</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">[</span><span class="n">j</span><span class="p">]):</span>
+            <span class="n">array</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">array</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">right</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="o">+</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">mid</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">:</span>
+            <span class="n">array</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">:</span>
+            <span class="n">array</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">right</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">))</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>
