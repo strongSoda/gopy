@@ -110,3 +110,14 @@
 # from gopy.profile import profile
 # from gopy.strings.knuth_morris_pratt import match 
 # print(profile('match("ABCDAADDABCABAB","A")'))
+
+"""test for 01_knapsack"""
+# values = [2,3,4]
+# weights = [1,2,3]
+# n_items = 3
+# capacity = 3
+# from gopy.dynamicProgramming.knapsack import knapsack_dp
+
+# picks = knapsack_dp(values,weights,n_items,capacity,True)
+# print(picks)
+

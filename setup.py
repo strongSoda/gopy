@@ -21,7 +21,10 @@ setup(name='gopy',
       author_email="strongsoda2@gmail.com",
       license='MIT',
       packages=find_packages(),
-      install_requires=['snakeviz=2.0.1'],
+      install_requires=[
+          'snakeviz=2.0.1',
+          'numpy'
+          ],
               'Programming Language :: Python :: 3',
           'Programming Language :: Python :: 3.4',
           'Programming Language :: Python :: 3.5',
