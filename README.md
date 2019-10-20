@@ -1,12 +1,26 @@
 ## Python Data Structures and Algorithms
 
+[![GitHub issues](https://img.shields.io/github/issues/strongSoda/gopy?style=flat-square)](https://github.com/strongSoda/gopy/issues)  [![GitHub forks](https://img.shields.io/github/forks/strongSoda/gopy?style=flat-square)](https://github.com/strongSoda/gopy/network) [![GitHub stars](https://img.shields.io/github/stars/strongSoda/gopy?style=flat-square)](https://github.com/strongSoda/gopy/stargazers) [![GitHub license](https://img.shields.io/github/license/strongSoda/gopy?style=flat-square)](https://github.com/strongSoda/gopy/blob/master/LICENSE.txt) [![PayPal](https://img.shields.io/badge/PayPal-Donate-blue)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=P3BP3APA22KEU&source=url)
+
+**One utility** to get all the algorithms fast and ready into your project, analyze their **visualizations** for your specific test case (not nature of increase but actual running time) and **study** their implementation for academic purposes. :+1:
+
+<p align="center">
+  <img width="560" height="300" src="https://media.giphy.com/media/ehgT3wyRUxAnylAzXW/giphy.gif">
+</p
+
+This library is under active development. :star: Star the repo for updates.
+
 - [Installation](#install)
 - [Usage](#usage)
-- [For Education](#for-education)
+- [Api Docs](#api-docs)
 - [For Analysis](#for-analysis)
 - [List of Implementations](#list-of-implementations)
 - [Contribute](#contribute)
 - [Support](#support)
+
+### Api Docs
+
+Read the full doumentation here [API Docs](https://strongsoda.github.io/gopy/)
 
 ### Install
 
@@ -63,146 +77,30 @@ Output:
 Not Found
 ```
 
-### For Education
-
-This library can be used for production software as well as for educational purposes.
-
-**Example:** Learn Quick Sort
-
-```python
-import gopy.sorting.quick as quick
-print(quick.__doc__)
-```
-
-Output: 
-
-```markdown
-Quick sort is a highly efficient sorting algorithm and is based on partitioning of array of data 
-into smaller arrays. A large array is partitioned into two arrays one of which holds values 
-smaller than the specified value, say pivot, based on which the partition is made and another 
-array holds values greater than the pivot value.
-
-Quick sort partitions an array and then calls itself recursively twice to sort the two resulting 
-subarrays. This algorithm is quite efficient for large-sized data sets as its average and worst 
-case complexity are of Ο(n2), where n is the number of items.
-
-### Quick Sort Pivot Algorithm
-
-Based on our understanding of partitioning in quick sort, we will now try to write an algorithm for 
-it, which is as follows.
-
-Step 1 − Choose the highest index value has pivot
-Step 2 − Take two variables to point left and right of the list excluding pivot
-Step 3 − left points to the low index
-Step 4 − right points to the high
-Step 5 − while value at left is less than pivot move right
-Step 6 − while value at right is greater than pivot move left
-Step 7 − if both step 5 and step 6 does not match swap left and right
-Step 8 − if left ≥ right, the point where they met is new pivot
-
-### Quick Sort Pivot Pseudocode
-
-The pseudocode for the above algorithm can be derived as −
-
-```python
-function partitionFunc(left, right, pivot)
-   leftPointer = left
-   rightPointer = right - 1
-
-   while True do
-      while A[++leftPointer] < pivot do
-         //do-nothing            
-      end while
-		
-      while rightPointer > 0 && A[--rightPointer] > pivot do
-         //do-nothing         
-      end while
-		
-      if leftPointer >= rightPointer
-         break
-      else                
-         swap leftPointer,rightPointer
-      end if
-		
-   end while 
-	
-   swap leftPointer,right
-   return leftPointer
-	
-end function
-```
-
-### Quick Sort Algorithm
-
-Using pivot algorithm recursively, we end up with smaller possible partitions. Each partition is 
-then processed for quick sort. We define recursive algorithm for quicksort as follows −
-
-Step 1 − Make the right-most index value pivot
-Step 2 − partition the array using pivot value
-Step 3 − quicksort left partition recursively
-Step 4 − quicksort right partition recursively
-
-### Quick Sort Pseudocode
-
-To get more into it, let see the pseudocode for quick sort algorithm −
-
-```python
-procedure quickSort(left, right)
-
-   if right-left <= 0
-      return
-   else     
-      pivot = A[right]
-      partition = partitionFunc(left, right, pivot)
-      quickSort(left,partition-1)
-      quickSort(partition+1,right)    
-   end if		
-   
-end procedure
-```
-```
-
 ### For Analysis
 
-You can see profiling of all algorithms
+#### Building awesome visualizations for algorithms
 
+Although on paper one algorithm might prove better than other but it's mostly based on nature of order of increase in 
+running time with respect to input size.
+However, in practice an algorithm having higher runtime complexity than others may actually have a smaller runtime
+for your specific test case.
+With gopy, you can test each algorithm's behavior for your specific input and test case and compare actual running times in practice.
 
-**Example:** Analyse ternary search
+eg:
 
-```python
-from gopy.search.ternary import *
-print(profile())
-```
-
-Output: 
-
-```bash
-7 function calls (6 primitive calls) in 0.000 seconds
-
-   Ordered by: standard name
-
-   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-        1    0.000    0.000    0.000    0.000 <string>:1(<module>)
-      2/1    0.000    0.000    0.000    0.000 ternary.py:14(ternary_search)
-        1    0.000    0.000    0.000    0.000 ternary.py:31(search)
-        1    0.000    0.000    0.000    0.000 {built-in method builtins.exec}
-        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
-        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
-```
-
-*Check input data for profiling*
+**test for knuth_morris_pratt**
 
 ```python
-from gopy.search.ternary import *
-print(profile.__doc__)
+from gopy.profile import profile
+from gopy.strings.knuth_morris_pratt import match 
+print(profile('match("ABCDAADDABCABAB","A")'))
 ```
+This will make in depth visualizations in your browser for the kmp algorithm.
 
-Output: 
-
-```bash
-profiling input 
-    search(10,[0,1,2,3,4,5,6,7,8,9,10])
-```
+<p align="center">
+  <img width="760" height="400" src="https://media.giphy.com/media/ehgT3wyRUxAnylAzXW/giphy.gif">
+</p
 
 ### List of implementations
 
