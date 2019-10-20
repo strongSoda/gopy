@@ -9,8 +9,9 @@ for the array (in which you will search for an element) to be sorted before you 
 the search. In this search, after each iteration it neglects ⅓ part of the array and
 repeats the same operations on the remaining ⅔.
 
-implementation
+### Psuedo Code
 
+```
 int ternary_search(int l,int r, int x)
 {
     if(r>=l)
@@ -31,8 +32,10 @@ int ternary_search(int l,int r, int x)
     }
     return -1;
 }
+```
 
-Complexity
+### Complexity
+
 O(log3N) , where N is the size of the array
 """
 

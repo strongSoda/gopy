@@ -2,18 +2,20 @@
 Jump search technique also works for ordered lists. It creates a block and 
 tries to find the element in that block. If the item is not in the block, 
 it shifts the entire block. The block size is based on the size of the list. 
-If the size of the list is n then block size will be √n. After finding a 
-correct block it finds the item using a linear search technique. The jump 
+If the size of the list is n then block size will be √n. 
+
+After finding a correct block it finds the item using a linear search technique. The jump 
 search lies between linear search and binary search according to its performance.
 
-The complexity of Jump Search Technique
+### The complexity of Jump Search Technique
 
-Time Complexity: O(√n)
+- Time Complexity: O(√n)
 
-Space Complexity: O(1)
+- Space Complexity: O(1)
 
-Input and Output
+### Input and Output
 
+```
 Input: 
 
 A sorted list of data:
@@ -23,9 +25,11 @@ The search key 356
 Output: 
 
 Item found at location: 11
+```
 
-Algorithm
+### Algorithm
 
+```
 jumpSearch(array, size, key)
 
 Input: An sorted array, size of the array and the search key
@@ -48,7 +52,7 @@ Begin
    done
    return invalid location
 End
-
+```
 """
 
 import math 
