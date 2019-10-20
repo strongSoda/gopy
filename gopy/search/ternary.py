@@ -1,12 +1,12 @@
-"""
-Like linear search and binary search, ternary search is a searching technique that 
-is used to determine the position of a specific value in an array. In binary search, 
-the sorted array is divided into two parts while in ternary search, it is divided into 
-3 parts and then you determine in which part the element exists.
+"""Like linear search and binary search, ternary search is a searching
+technique that is used to determine the position of a specific value in an
+array. In binary search, the sorted array is divided into two parts while in
+ternary search, it is divided into 3 parts and then you determine in which part
+the element exists.
 
-Ternary search, like binary search, is a divide-and-conquer algorithm. It is mandatory 
-for the array (in which you will search for an element) to be sorted before you begin 
-the search. In this search, after each iteration it neglects ⅓ part of the array and 
+Ternary search, like binary search, is a divide-and-conquer algorithm. It is mandatory
+for the array (in which you will search for an element) to be sorted before you begin
+the search. In this search, after each iteration it neglects ⅓ part of the array and
 repeats the same operations on the remaining ⅔.
 
 implementation
@@ -34,11 +34,11 @@ int ternary_search(int l,int r, int x)
 
 Complexity
 O(log3N) , where N is the size of the array
-
 """
 
 import cProfile
 import re
+import subprocess
 
 def ternary_search(left_index, right_index, search_key, array):
     if left_index <= right_index:
@@ -62,9 +62,7 @@ def search(item,array):
     right_index = len(array) - 1
     return ternary_search(left_index, right_index, item, array)
 
-def profile():
-    '''profiling input 
-    search(10,[0,1,2,3,4,5,6,7,8,9,10])
-    '''
-    cProfile.run('search(10,[0,1,2,3,4,5,6,7,8,9,10])')
-    
+def profile(s):
+    """profiling Plotting awesome graphs..."""
+    cProfile.run(s,'test.profile')
+    return subprocess.check_output(['snakeviz', 'test.profile'])

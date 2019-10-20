@@ -1,0 +1,1214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.1" />
+<title>gopy.matrix.matrix_class API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>gopy.matrix.matrix_class</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># An OOP aproach to representing and manipulating matrices
+
+
+class Matrix:
+    &#34;&#34;&#34;
+    Matrix object generated from a 2D array where each element is an array representing a row.
+    Rows can contain type int or float.
+    Common operations and information available.
+    &gt;&gt;&gt; rows = [
+    ...     [1, 2, 3],
+    ...     [4, 5, 6],
+    ...     [7, 8, 9]
+    ... ]
+    &gt;&gt;&gt; matrix = Matrix(rows)
+    &gt;&gt;&gt; print(matrix)
+    [[1. 2. 3.]
+     [4. 5. 6.]
+     [7. 8. 9.]]
+    
+    Matrix rows and columns are available as 2D arrays
+    &gt;&gt;&gt; print(matrix.rows)
+    [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    &gt;&gt;&gt; print(matrix.columns())
+    [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
+    
+    Order is returned as a tuple
+    &gt;&gt;&gt; matrix.order
+    (3, 3)
+
+    Squareness and invertability are represented as bool
+    &gt;&gt;&gt; matrix.is_square
+    True
+    &gt;&gt;&gt; matrix.is_invertable()
+    False
+
+    Identity, Minors, Cofactors and Adjugate are returned as Matrices.  Inverse can be a Matrix or Nonetype
+    &gt;&gt;&gt; print(matrix.identity())
+    [[1. 0. 0.]
+     [0. 1. 0.]
+     [0. 0. 1.]]
+    &gt;&gt;&gt; print(matrix.minors())
+    [[-3. -6. -3.]
+     [-6. -12. -6.]
+     [-3. -6. -3.]]
+    &gt;&gt;&gt; print(matrix.cofactors())
+    [[-3. 6. -3.]
+     [6. -12. 6.]
+     [-3. 6. -3.]]
+    &gt;&gt;&gt; print(matrix.adjugate()) # won&#39;t be apparent due to the nature of the cofactor matrix
+    [[-3. 6. -3.]
+     [6. -12. 6.]
+     [-3. 6. -3.]]
+    &gt;&gt;&gt; print(matrix.inverse())
+    None
+
+    Determinant is an int, float, or Nonetype
+    &gt;&gt;&gt; matrix.determinant()
+    0
+
+    Negation, scalar multiplication, addition, subtraction, multiplication and exponentiation are available and all return a Matrix
+    &gt;&gt;&gt; print(-matrix)
+    [[-1. -2. -3.]
+     [-4. -5. -6.]
+     [-7. -8. -9.]]
+    &gt;&gt;&gt; matrix2 = matrix * 3
+    &gt;&gt;&gt; print(matrix2)
+    [[3. 6. 9.]
+     [12. 15. 18.]
+     [21. 24. 27.]]
+    &gt;&gt;&gt; print(matrix + matrix2)
+    [[4. 8. 12.]
+     [16. 20. 24.]
+     [28. 32. 36.]]
+    &gt;&gt;&gt; print(matrix - matrix2)
+    [[-2. -4. -6.]
+     [-8. -10. -12.]
+     [-14. -16. -18.]]
+    &gt;&gt;&gt; print(matrix ** 3)
+    [[468. 576. 684.]
+     [1062. 1305. 1548.]
+     [1656. 2034. 2412.]]
+
+    Matrices can also be modified
+    &gt;&gt;&gt; matrix.add_row([10, 11, 12])
+    &gt;&gt;&gt; print(matrix)
+    [[1. 2. 3.]
+     [4. 5. 6.]
+     [7. 8. 9.]
+     [10. 11. 12.]]
+    &gt;&gt;&gt; matrix2.add_column([8, 16, 32])
+    &gt;&gt;&gt; print(matrix2)
+    [[3. 6. 9. 8.]
+     [12. 15. 18. 16.]
+     [21. 24. 27. 32.]]
+    &gt;&gt;&gt; print(matrix *  matrix2)
+    [[90. 108. 126. 136.]
+     [198. 243. 288. 304.]
+     [306. 378. 450. 472.]
+     [414. 513. 612. 640.]]
+
+    &#34;&#34;&#34;
+
+    def __init__(self, rows):
+        error = TypeError(
+            &#34;Matrices must be formed from a list of zero or more lists containing at least &#34;
+            &#34;one and the same number of values, each of which must be of type int or float.&#34;
+        )
+        if len(rows) != 0:
+            cols = len(rows[0])
+            if cols == 0:
+                raise error
+            for row in rows:
+                if len(row) != cols:
+                    raise error
+                for value in row:
+                    if not isinstance(value, (int, float)):
+                        raise error
+            self.rows = rows
+        else:
+            self.rows = []
+
+    # MATRIX INFORMATION
+    def columns(self):
+        return [[row[i] for row in self.rows] for i in range(len(self.rows[0]))]
+
+    @property
+    def num_rows(self):
+        return len(self.rows)
+
+    @property
+    def num_columns(self):
+        return len(self.rows[0])
+
+    @property
+    def order(self):
+        return (self.num_rows, self.num_columns)
+
+    @property
+    def is_square(self):
+        return self.order[0] == self.order[1]
+
+    def identity(self):
+        values = [
+            [0 if column_num != row_num else 1 for column_num in range(self.num_rows)]
+            for row_num in range(self.num_rows)
+        ]
+        return Matrix(values)
+
+    def determinant(self):
+        if not self.is_square:
+            return None
+        if self.order == (0, 0):
+            return 1
+        if self.order == (1, 1):
+            return self.rows[0][0]
+        if self.order == (2, 2):
+            return (self.rows[0][0] * self.rows[1][1]) - (
+                self.rows[0][1] * self.rows[1][0]
+            )
+        else:
+            return sum(
+                [
+                    self.rows[0][column] * self.cofactors().rows[0][column]
+                    for column in range(self.num_columns)
+                ]
+            )
+
+    def is_invertable(self):
+        return bool(self.determinant())
+
+    def get_minor(self, row, column):
+        values = [
+            [
+                self.rows[other_row][other_column]
+                for other_column in range(self.num_columns)
+                if other_column != column
+            ]
+            for other_row in range(self.num_rows)
+            if other_row != row
+        ]
+        return Matrix(values).determinant()
+
+    def get_cofactor(self, row, column):
+        if (row + column) % 2 == 0:
+            return self.get_minor(row, column)
+        return -1 * self.get_minor(row, column)
+
+    def minors(self):
+        return Matrix(
+            [
+                [self.get_minor(row, column) for column in range(self.num_columns)]
+                for row in range(self.num_rows)
+            ]
+        )
+
+    def cofactors(self):
+        return Matrix(
+            [
+                [
+                    self.minors().rows[row][column]
+                    if (row + column) % 2 == 0
+                    else self.minors().rows[row][column] * -1
+                    for column in range(self.minors().num_columns)
+                ]
+                for row in range(self.minors().num_rows)
+            ]
+        )
+
+    def adjugate(self):
+        values = [
+            [self.cofactors().rows[column][row] for column in range(self.num_columns)]
+            for row in range(self.num_rows)
+        ]
+        return Matrix(values)
+
+    def inverse(self):
+        determinant = self.determinant()
+        return None if not determinant else self.adjugate() * (1 / determinant)
+
+    def __repr__(self):
+        return str(self.rows)
+
+    def __str__(self):
+        if self.num_rows == 0:
+            return &#34;[]&#34;
+        if self.num_rows == 1:
+            return &#34;[[&#34; + &#34;. &#34;.join(self.rows[0]) + &#34;]]&#34;
+        return (
+            &#34;[&#34;
+            + &#34;\n &#34;.join(
+                [
+                    &#34;[&#34; + &#34;. &#34;.join([str(value) for value in row]) + &#34;.]&#34;
+                    for row in self.rows
+                ]
+            )
+            + &#34;]&#34;
+        )
+
+    # MATRIX MANIPULATION
+    def add_row(self, row, position=None):
+        type_error = TypeError(&#34;Row must be a list containing all ints and/or floats&#34;)
+        if not isinstance(row, list):
+            raise type_error
+        for value in row:
+            if not isinstance(value, (int, float)):
+                raise type_error
+        if len(row) != self.num_columns:
+            raise ValueError(
+                &#34;Row must be equal in length to the other rows in the matrix&#34;
+            )
+        if position is None:
+            self.rows.append(row)
+        else:
+            self.rows = self.rows[0:position] + [row] + self.rows[position:]
+
+    def add_column(self, column, position=None):
+        type_error = TypeError(
+            &#34;Column must be a list containing all ints and/or floats&#34;
+        )
+        if not isinstance(column, list):
+            raise type_error
+        for value in column:
+            if not isinstance(value, (int, float)):
+                raise type_error
+        if len(column) != self.num_rows:
+            raise ValueError(
+                &#34;Column must be equal in length to the other columns in the matrix&#34;
+            )
+        if position is None:
+            self.rows = [self.rows[i] + [column[i]] for i in range(self.num_rows)]
+        else:
+            self.rows = [
+                self.rows[i][0:position] + [column[i]] + self.rows[i][position:]
+                for i in range(self.num_rows)
+            ]
+
+    # MATRIX OPERATIONS
+    def __eq__(self, other):
+        if not isinstance(other, Matrix):
+            raise TypeError(&#34;A Matrix can only be compared with another Matrix&#34;)
+        return self.rows == other.rows
+
+    def __ne__(self, other):
+        return not self == other
+
+    def __neg__(self):
+        return self * -1
+
+    def __add__(self, other):
+        if self.order != other.order:
+            raise ValueError(&#34;Addition requires matrices of the same order&#34;)
+        return Matrix(
+            [
+                [self.rows[i][j] + other.rows[i][j] for j in range(self.num_columns)]
+                for i in range(self.num_rows)
+            ]
+        )
+
+    def __sub__(self, other):
+        if self.order != other.order:
+            raise ValueError(&#34;Subtraction requires matrices of the same order&#34;)
+        return Matrix(
+            [
+                [self.rows[i][j] - other.rows[i][j] for j in range(self.num_columns)]
+                for i in range(self.num_rows)
+            ]
+        )
+
+    def __mul__(self, other):
+        if isinstance(other, (int, float)):
+            return Matrix([[element * other for element in row] for row in self.rows])
+        elif isinstance(other, Matrix):
+            if self.num_columns != other.num_rows:
+                raise ValueError(
+                    &#34;The number of columns in the first matrix must &#34;
+                    &#34;be equal to the number of rows in the second&#34;
+                )
+            return Matrix(
+                [
+                    [Matrix.dot_product(row, column) for column in other.columns()]
+                    for row in self.rows
+                ]
+            )
+        else:
+            raise TypeError(
+                &#34;A Matrix can only be multiplied by an int, float, or another matrix&#34;
+            )
+
+    def __pow__(self, other):
+        if not isinstance(other, int):
+            raise TypeError(&#34;A Matrix can only be raised to the power of an int&#34;)
+        if not self.is_square:
+            raise ValueError(&#34;Only square matrices can be raised to a power&#34;)
+        if other == 0:
+            return self.identity()
+        if other &lt; 0:
+            if self.is_invertable:
+                return self.inverse() ** (-other)
+            raise ValueError(
+                &#34;Only invertable matrices can be raised to a negative power&#34;
+            )
+        result = self
+        for i in range(other - 1):
+            result *= self
+        return result
+
+    @classmethod
+    def dot_product(cls, row, column):
+        return sum([row[i] * column[i] for i in range(len(row))])
+
+
+if __name__ == &#34;__main__&#34;:
+    import doctest
+
+    doctest.testmod()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="gopy.matrix.matrix_class.Matrix"><code class="flex name class">
+<span>class <span class="ident">Matrix</span></span>
+<span>(</span><span>rows)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Matrix object generated from a 2D array where each element is an array representing a row.
+Rows can contain type int or float.
+Common operations and information available.</p>
+<pre><code>&gt;&gt;&gt; rows = [
+...     [1, 2, 3],
+...     [4, 5, 6],
+...     [7, 8, 9]
+... ]
+&gt;&gt;&gt; matrix = Matrix(rows)
+&gt;&gt;&gt; print(matrix)
+[[1. 2. 3.]
+</code></pre>
+<p>[4. 5. 6.]
+[7. 8. 9.]]</p>
+<p>Matrix rows and columns are available as 2D arrays</p>
+<pre><code>&gt;&gt;&gt; print(matrix.rows)
+[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+&gt;&gt;&gt; print(matrix.columns())
+[[1, 4, 7], [2, 5, 8], [3, 6, 9]]
+</code></pre>
+<p>Order is returned as a tuple</p>
+<pre><code>&gt;&gt;&gt; matrix.order
+(3, 3)
+</code></pre>
+<p>Squareness and invertability are represented as bool</p>
+<pre><code>&gt;&gt;&gt; matrix.is_square
+True
+&gt;&gt;&gt; matrix.is_invertable()
+False
+</code></pre>
+<p>Identity, Minors, Cofactors and Adjugate are returned as Matrices.
+Inverse can be a Matrix or Nonetype</p>
+<pre><code>&gt;&gt;&gt; print(matrix.identity())
+[[1. 0. 0.]
+</code></pre>
+<p>[0. 1. 0.]
+[0. 0. 1.]]</p>
+<pre><code>&gt;&gt;&gt; print(matrix.minors())
+[[-3. -6. -3.]
+</code></pre>
+<p>[-6. -12. -6.]
+[-3. -6. -3.]]</p>
+<pre><code>&gt;&gt;&gt; print(matrix.cofactors())
+[[-3. 6. -3.]
+</code></pre>
+<p>[6. -12. 6.]
+[-3. 6. -3.]]</p>
+<pre><code>&gt;&gt;&gt; print(matrix.adjugate()) # won't be apparent due to the nature of the cofactor matrix
+[[-3. 6. -3.]
+</code></pre>
+<p>[6. -12. 6.]
+[-3. 6. -3.]]</p>
+<pre><code>&gt;&gt;&gt; print(matrix.inverse())
+None
+</code></pre>
+<p>Determinant is an int, float, or Nonetype</p>
+<pre><code>&gt;&gt;&gt; matrix.determinant()
+0
+</code></pre>
+<p>Negation, scalar multiplication, addition, subtraction, multiplication and exponentiation are available and all return a Matrix</p>
+<pre><code>&gt;&gt;&gt; print(-matrix)
+[[-1. -2. -3.]
+</code></pre>
+<p>[-4. -5. -6.]
+[-7. -8. -9.]]</p>
+<pre><code>&gt;&gt;&gt; matrix2 = matrix * 3
+&gt;&gt;&gt; print(matrix2)
+[[3. 6. 9.]
+</code></pre>
+<p>[12. 15. 18.]
+[21. 24. 27.]]</p>
+<pre><code>&gt;&gt;&gt; print(matrix + matrix2)
+[[4. 8. 12.]
+</code></pre>
+<p>[16. 20. 24.]
+[28. 32. 36.]]</p>
+<pre><code>&gt;&gt;&gt; print(matrix - matrix2)
+[[-2. -4. -6.]
+</code></pre>
+<p>[-8. -10. -12.]
+[-14. -16. -18.]]</p>
+<pre><code>&gt;&gt;&gt; print(matrix ** 3)
+[[468. 576. 684.]
+</code></pre>
+<p>[1062. 1305. 1548.]
+[1656. 2034. 2412.]]</p>
+<p>Matrices can also be modified</p>
+<pre><code>&gt;&gt;&gt; matrix.add_row([10, 11, 12])
+&gt;&gt;&gt; print(matrix)
+[[1. 2. 3.]
+</code></pre>
+<p>[4. 5. 6.]
+[7. 8. 9.]
+[10. 11. 12.]]</p>
+<pre><code>&gt;&gt;&gt; matrix2.add_column([8, 16, 32])
+&gt;&gt;&gt; print(matrix2)
+[[3. 6. 9. 8.]
+</code></pre>
+<p>[12. 15. 18. 16.]
+[21. 24. 27. 32.]]</p>
+<pre><code>&gt;&gt;&gt; print(matrix *  matrix2)
+[[90. 108. 126. 136.]
+</code></pre>
+<p>[198. 243. 288. 304.]
+[306. 378. 450. 472.]
+[414. 513. 612. 640.]]</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Matrix:
+    &#34;&#34;&#34;
+    Matrix object generated from a 2D array where each element is an array representing a row.
+    Rows can contain type int or float.
+    Common operations and information available.
+    &gt;&gt;&gt; rows = [
+    ...     [1, 2, 3],
+    ...     [4, 5, 6],
+    ...     [7, 8, 9]
+    ... ]
+    &gt;&gt;&gt; matrix = Matrix(rows)
+    &gt;&gt;&gt; print(matrix)
+    [[1. 2. 3.]
+     [4. 5. 6.]
+     [7. 8. 9.]]
+    
+    Matrix rows and columns are available as 2D arrays
+    &gt;&gt;&gt; print(matrix.rows)
+    [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    &gt;&gt;&gt; print(matrix.columns())
+    [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
+    
+    Order is returned as a tuple
+    &gt;&gt;&gt; matrix.order
+    (3, 3)
+
+    Squareness and invertability are represented as bool
+    &gt;&gt;&gt; matrix.is_square
+    True
+    &gt;&gt;&gt; matrix.is_invertable()
+    False
+
+    Identity, Minors, Cofactors and Adjugate are returned as Matrices.  Inverse can be a Matrix or Nonetype
+    &gt;&gt;&gt; print(matrix.identity())
+    [[1. 0. 0.]
+     [0. 1. 0.]
+     [0. 0. 1.]]
+    &gt;&gt;&gt; print(matrix.minors())
+    [[-3. -6. -3.]
+     [-6. -12. -6.]
+     [-3. -6. -3.]]
+    &gt;&gt;&gt; print(matrix.cofactors())
+    [[-3. 6. -3.]
+     [6. -12. 6.]
+     [-3. 6. -3.]]
+    &gt;&gt;&gt; print(matrix.adjugate()) # won&#39;t be apparent due to the nature of the cofactor matrix
+    [[-3. 6. -3.]
+     [6. -12. 6.]
+     [-3. 6. -3.]]
+    &gt;&gt;&gt; print(matrix.inverse())
+    None
+
+    Determinant is an int, float, or Nonetype
+    &gt;&gt;&gt; matrix.determinant()
+    0
+
+    Negation, scalar multiplication, addition, subtraction, multiplication and exponentiation are available and all return a Matrix
+    &gt;&gt;&gt; print(-matrix)
+    [[-1. -2. -3.]
+     [-4. -5. -6.]
+     [-7. -8. -9.]]
+    &gt;&gt;&gt; matrix2 = matrix * 3
+    &gt;&gt;&gt; print(matrix2)
+    [[3. 6. 9.]
+     [12. 15. 18.]
+     [21. 24. 27.]]
+    &gt;&gt;&gt; print(matrix + matrix2)
+    [[4. 8. 12.]
+     [16. 20. 24.]
+     [28. 32. 36.]]
+    &gt;&gt;&gt; print(matrix - matrix2)
+    [[-2. -4. -6.]
+     [-8. -10. -12.]
+     [-14. -16. -18.]]
+    &gt;&gt;&gt; print(matrix ** 3)
+    [[468. 576. 684.]
+     [1062. 1305. 1548.]
+     [1656. 2034. 2412.]]
+
+    Matrices can also be modified
+    &gt;&gt;&gt; matrix.add_row([10, 11, 12])
+    &gt;&gt;&gt; print(matrix)
+    [[1. 2. 3.]
+     [4. 5. 6.]
+     [7. 8. 9.]
+     [10. 11. 12.]]
+    &gt;&gt;&gt; matrix2.add_column([8, 16, 32])
+    &gt;&gt;&gt; print(matrix2)
+    [[3. 6. 9. 8.]
+     [12. 15. 18. 16.]
+     [21. 24. 27. 32.]]
+    &gt;&gt;&gt; print(matrix *  matrix2)
+    [[90. 108. 126. 136.]
+     [198. 243. 288. 304.]
+     [306. 378. 450. 472.]
+     [414. 513. 612. 640.]]
+
+    &#34;&#34;&#34;
+
+    def __init__(self, rows):
+        error = TypeError(
+            &#34;Matrices must be formed from a list of zero or more lists containing at least &#34;
+            &#34;one and the same number of values, each of which must be of type int or float.&#34;
+        )
+        if len(rows) != 0:
+            cols = len(rows[0])
+            if cols == 0:
+                raise error
+            for row in rows:
+                if len(row) != cols:
+                    raise error
+                for value in row:
+                    if not isinstance(value, (int, float)):
+                        raise error
+            self.rows = rows
+        else:
+            self.rows = []
+
+    # MATRIX INFORMATION
+    def columns(self):
+        return [[row[i] for row in self.rows] for i in range(len(self.rows[0]))]
+
+    @property
+    def num_rows(self):
+        return len(self.rows)
+
+    @property
+    def num_columns(self):
+        return len(self.rows[0])
+
+    @property
+    def order(self):
+        return (self.num_rows, self.num_columns)
+
+    @property
+    def is_square(self):
+        return self.order[0] == self.order[1]
+
+    def identity(self):
+        values = [
+            [0 if column_num != row_num else 1 for column_num in range(self.num_rows)]
+            for row_num in range(self.num_rows)
+        ]
+        return Matrix(values)
+
+    def determinant(self):
+        if not self.is_square:
+            return None
+        if self.order == (0, 0):
+            return 1
+        if self.order == (1, 1):
+            return self.rows[0][0]
+        if self.order == (2, 2):
+            return (self.rows[0][0] * self.rows[1][1]) - (
+                self.rows[0][1] * self.rows[1][0]
+            )
+        else:
+            return sum(
+                [
+                    self.rows[0][column] * self.cofactors().rows[0][column]
+                    for column in range(self.num_columns)
+                ]
+            )
+
+    def is_invertable(self):
+        return bool(self.determinant())
+
+    def get_minor(self, row, column):
+        values = [
+            [
+                self.rows[other_row][other_column]
+                for other_column in range(self.num_columns)
+                if other_column != column
+            ]
+            for other_row in range(self.num_rows)
+            if other_row != row
+        ]
+        return Matrix(values).determinant()
+
+    def get_cofactor(self, row, column):
+        if (row + column) % 2 == 0:
+            return self.get_minor(row, column)
+        return -1 * self.get_minor(row, column)
+
+    def minors(self):
+        return Matrix(
+            [
+                [self.get_minor(row, column) for column in range(self.num_columns)]
+                for row in range(self.num_rows)
+            ]
+        )
+
+    def cofactors(self):
+        return Matrix(
+            [
+                [
+                    self.minors().rows[row][column]
+                    if (row + column) % 2 == 0
+                    else self.minors().rows[row][column] * -1
+                    for column in range(self.minors().num_columns)
+                ]
+                for row in range(self.minors().num_rows)
+            ]
+        )
+
+    def adjugate(self):
+        values = [
+            [self.cofactors().rows[column][row] for column in range(self.num_columns)]
+            for row in range(self.num_rows)
+        ]
+        return Matrix(values)
+
+    def inverse(self):
+        determinant = self.determinant()
+        return None if not determinant else self.adjugate() * (1 / determinant)
+
+    def __repr__(self):
+        return str(self.rows)
+
+    def __str__(self):
+        if self.num_rows == 0:
+            return &#34;[]&#34;
+        if self.num_rows == 1:
+            return &#34;[[&#34; + &#34;. &#34;.join(self.rows[0]) + &#34;]]&#34;
+        return (
+            &#34;[&#34;
+            + &#34;\n &#34;.join(
+                [
+                    &#34;[&#34; + &#34;. &#34;.join([str(value) for value in row]) + &#34;.]&#34;
+                    for row in self.rows
+                ]
+            )
+            + &#34;]&#34;
+        )
+
+    # MATRIX MANIPULATION
+    def add_row(self, row, position=None):
+        type_error = TypeError(&#34;Row must be a list containing all ints and/or floats&#34;)
+        if not isinstance(row, list):
+            raise type_error
+        for value in row:
+            if not isinstance(value, (int, float)):
+                raise type_error
+        if len(row) != self.num_columns:
+            raise ValueError(
+                &#34;Row must be equal in length to the other rows in the matrix&#34;
+            )
+        if position is None:
+            self.rows.append(row)
+        else:
+            self.rows = self.rows[0:position] + [row] + self.rows[position:]
+
+    def add_column(self, column, position=None):
+        type_error = TypeError(
+            &#34;Column must be a list containing all ints and/or floats&#34;
+        )
+        if not isinstance(column, list):
+            raise type_error
+        for value in column:
+            if not isinstance(value, (int, float)):
+                raise type_error
+        if len(column) != self.num_rows:
+            raise ValueError(
+                &#34;Column must be equal in length to the other columns in the matrix&#34;
+            )
+        if position is None:
+            self.rows = [self.rows[i] + [column[i]] for i in range(self.num_rows)]
+        else:
+            self.rows = [
+                self.rows[i][0:position] + [column[i]] + self.rows[i][position:]
+                for i in range(self.num_rows)
+            ]
+
+    # MATRIX OPERATIONS
+    def __eq__(self, other):
+        if not isinstance(other, Matrix):
+            raise TypeError(&#34;A Matrix can only be compared with another Matrix&#34;)
+        return self.rows == other.rows
+
+    def __ne__(self, other):
+        return not self == other
+
+    def __neg__(self):
+        return self * -1
+
+    def __add__(self, other):
+        if self.order != other.order:
+            raise ValueError(&#34;Addition requires matrices of the same order&#34;)
+        return Matrix(
+            [
+                [self.rows[i][j] + other.rows[i][j] for j in range(self.num_columns)]
+                for i in range(self.num_rows)
+            ]
+        )
+
+    def __sub__(self, other):
+        if self.order != other.order:
+            raise ValueError(&#34;Subtraction requires matrices of the same order&#34;)
+        return Matrix(
+            [
+                [self.rows[i][j] - other.rows[i][j] for j in range(self.num_columns)]
+                for i in range(self.num_rows)
+            ]
+        )
+
+    def __mul__(self, other):
+        if isinstance(other, (int, float)):
+            return Matrix([[element * other for element in row] for row in self.rows])
+        elif isinstance(other, Matrix):
+            if self.num_columns != other.num_rows:
+                raise ValueError(
+                    &#34;The number of columns in the first matrix must &#34;
+                    &#34;be equal to the number of rows in the second&#34;
+                )
+            return Matrix(
+                [
+                    [Matrix.dot_product(row, column) for column in other.columns()]
+                    for row in self.rows
+                ]
+            )
+        else:
+            raise TypeError(
+                &#34;A Matrix can only be multiplied by an int, float, or another matrix&#34;
+            )
+
+    def __pow__(self, other):
+        if not isinstance(other, int):
+            raise TypeError(&#34;A Matrix can only be raised to the power of an int&#34;)
+        if not self.is_square:
+            raise ValueError(&#34;Only square matrices can be raised to a power&#34;)
+        if other == 0:
+            return self.identity()
+        if other &lt; 0:
+            if self.is_invertable:
+                return self.inverse() ** (-other)
+            raise ValueError(
+                &#34;Only invertable matrices can be raised to a negative power&#34;
+            )
+        result = self
+        for i in range(other - 1):
+            result *= self
+        return result
+
+    @classmethod
+    def dot_product(cls, row, column):
+        return sum([row[i] * column[i] for i in range(len(row))])</code></pre>
+</details>
+<h3>Static methods</h3>
+<dl>
+<dt id="gopy.matrix.matrix_class.Matrix.dot_product"><code class="name flex">
+<span>def <span class="ident">dot_product</span></span>(<span>row, column)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def dot_product(cls, row, column):
+    return sum([row[i] * column[i] for i in range(len(row))])</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="gopy.matrix.matrix_class.Matrix.is_square"><code class="name">var <span class="ident">is_square</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def is_square(self):
+    return self.order[0] == self.order[1]</code></pre>
+</details>
+</dd>
+<dt id="gopy.matrix.matrix_class.Matrix.num_columns"><code class="name">var <span class="ident">num_columns</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def num_columns(self):
+    return len(self.rows[0])</code></pre>
+</details>
+</dd>
+<dt id="gopy.matrix.matrix_class.Matrix.num_rows"><code class="name">var <span class="ident">num_rows</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def num_rows(self):
+    return len(self.rows)</code></pre>
+</details>
+</dd>
+<dt id="gopy.matrix.matrix_class.Matrix.order"><code class="name">var <span class="ident">order</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def order(self):
+    return (self.num_rows, self.num_columns)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="gopy.matrix.matrix_class.Matrix.add_column"><code class="name flex">
+<span>def <span class="ident">add_column</span></span>(<span>self, column, position=None)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_column(self, column, position=None):
+    type_error = TypeError(
+        &#34;Column must be a list containing all ints and/or floats&#34;
+    )
+    if not isinstance(column, list):
+        raise type_error
+    for value in column:
+        if not isinstance(value, (int, float)):
+            raise type_error
+    if len(column) != self.num_rows:
+        raise ValueError(
+            &#34;Column must be equal in length to the other columns in the matrix&#34;
+        )
+    if position is None:
+        self.rows = [self.rows[i] + [column[i]] for i in range(self.num_rows)]
+    else:
+        self.rows = [
+            self.rows[i][0:position] + [column[i]] + self.rows[i][position:]
+            for i in range(self.num_rows)
+        ]</code></pre>
+</details>
+</dd>
+<dt id="gopy.matrix.matrix_class.Matrix.add_row"><code class="name flex">
+<span>def <span class="ident">add_row</span></span>(<span>self, row, position=None)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_row(self, row, position=None):
+    type_error = TypeError(&#34;Row must be a list containing all ints and/or floats&#34;)
+    if not isinstance(row, list):
+        raise type_error
+    for value in row:
+        if not isinstance(value, (int, float)):
+            raise type_error
+    if len(row) != self.num_columns:
+        raise ValueError(
+            &#34;Row must be equal in length to the other rows in the matrix&#34;
+        )
+    if position is None:
+        self.rows.append(row)
+    else:
+        self.rows = self.rows[0:position] + [row] + self.rows[position:]</code></pre>
+</details>
+</dd>
+<dt id="gopy.matrix.matrix_class.Matrix.adjugate"><code class="name flex">
+<span>def <span class="ident">adjugate</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def adjugate(self):
+    values = [
+        [self.cofactors().rows[column][row] for column in range(self.num_columns)]
+        for row in range(self.num_rows)
+    ]
+    return Matrix(values)</code></pre>
+</details>
+</dd>
+<dt id="gopy.matrix.matrix_class.Matrix.cofactors"><code class="name flex">
+<span>def <span class="ident">cofactors</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def cofactors(self):
+    return Matrix(
+        [
+            [
+                self.minors().rows[row][column]
+                if (row + column) % 2 == 0
+                else self.minors().rows[row][column] * -1
+                for column in range(self.minors().num_columns)
+            ]
+            for row in range(self.minors().num_rows)
+        ]
+    )</code></pre>
+</details>
+</dd>
+<dt id="gopy.matrix.matrix_class.Matrix.columns"><code class="name flex">
+<span>def <span class="ident">columns</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def columns(self):
+    return [[row[i] for row in self.rows] for i in range(len(self.rows[0]))]</code></pre>
+</details>
+</dd>
+<dt id="gopy.matrix.matrix_class.Matrix.determinant"><code class="name flex">
+<span>def <span class="ident">determinant</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def determinant(self):
+    if not self.is_square:
+        return None
+    if self.order == (0, 0):
+        return 1
+    if self.order == (1, 1):
+        return self.rows[0][0]
+    if self.order == (2, 2):
+        return (self.rows[0][0] * self.rows[1][1]) - (
+            self.rows[0][1] * self.rows[1][0]
+        )
+    else:
+        return sum(
+            [
+                self.rows[0][column] * self.cofactors().rows[0][column]
+                for column in range(self.num_columns)
+            ]
+        )</code></pre>
+</details>
+</dd>
+<dt id="gopy.matrix.matrix_class.Matrix.get_cofactor"><code class="name flex">
+<span>def <span class="ident">get_cofactor</span></span>(<span>self, row, column)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_cofactor(self, row, column):
+    if (row + column) % 2 == 0:
+        return self.get_minor(row, column)
+    return -1 * self.get_minor(row, column)</code></pre>
+</details>
+</dd>
+<dt id="gopy.matrix.matrix_class.Matrix.get_minor"><code class="name flex">
+<span>def <span class="ident">get_minor</span></span>(<span>self, row, column)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_minor(self, row, column):
+    values = [
+        [
+            self.rows[other_row][other_column]
+            for other_column in range(self.num_columns)
+            if other_column != column
+        ]
+        for other_row in range(self.num_rows)
+        if other_row != row
+    ]
+    return Matrix(values).determinant()</code></pre>
+</details>
+</dd>
+<dt id="gopy.matrix.matrix_class.Matrix.identity"><code class="name flex">
+<span>def <span class="ident">identity</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def identity(self):
+    values = [
+        [0 if column_num != row_num else 1 for column_num in range(self.num_rows)]
+        for row_num in range(self.num_rows)
+    ]
+    return Matrix(values)</code></pre>
+</details>
+</dd>
+<dt id="gopy.matrix.matrix_class.Matrix.inverse"><code class="name flex">
+<span>def <span class="ident">inverse</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def inverse(self):
+    determinant = self.determinant()
+    return None if not determinant else self.adjugate() * (1 / determinant)</code></pre>
+</details>
+</dd>
+<dt id="gopy.matrix.matrix_class.Matrix.is_invertable"><code class="name flex">
+<span>def <span class="ident">is_invertable</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_invertable(self):
+    return bool(self.determinant())</code></pre>
+</details>
+</dd>
+<dt id="gopy.matrix.matrix_class.Matrix.minors"><code class="name flex">
+<span>def <span class="ident">minors</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def minors(self):
+    return Matrix(
+        [
+            [self.get_minor(row, column) for column in range(self.num_columns)]
+            for row in range(self.num_rows)
+        ]
+    )</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="gopy.matrix" href="index.html">gopy.matrix</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="gopy.matrix.matrix_class.Matrix" href="#gopy.matrix.matrix_class.Matrix">Matrix</a></code></h4>
+<ul class="two-column">
+<li><code><a title="gopy.matrix.matrix_class.Matrix.add_column" href="#gopy.matrix.matrix_class.Matrix.add_column">add_column</a></code></li>
+<li><code><a title="gopy.matrix.matrix_class.Matrix.add_row" href="#gopy.matrix.matrix_class.Matrix.add_row">add_row</a></code></li>
+<li><code><a title="gopy.matrix.matrix_class.Matrix.adjugate" href="#gopy.matrix.matrix_class.Matrix.adjugate">adjugate</a></code></li>
+<li><code><a title="gopy.matrix.matrix_class.Matrix.cofactors" href="#gopy.matrix.matrix_class.Matrix.cofactors">cofactors</a></code></li>
+<li><code><a title="gopy.matrix.matrix_class.Matrix.columns" href="#gopy.matrix.matrix_class.Matrix.columns">columns</a></code></li>
+<li><code><a title="gopy.matrix.matrix_class.Matrix.determinant" href="#gopy.matrix.matrix_class.Matrix.determinant">determinant</a></code></li>
+<li><code><a title="gopy.matrix.matrix_class.Matrix.dot_product" href="#gopy.matrix.matrix_class.Matrix.dot_product">dot_product</a></code></li>
+<li><code><a title="gopy.matrix.matrix_class.Matrix.get_cofactor" href="#gopy.matrix.matrix_class.Matrix.get_cofactor">get_cofactor</a></code></li>
+<li><code><a title="gopy.matrix.matrix_class.Matrix.get_minor" href="#gopy.matrix.matrix_class.Matrix.get_minor">get_minor</a></code></li>
+<li><code><a title="gopy.matrix.matrix_class.Matrix.identity" href="#gopy.matrix.matrix_class.Matrix.identity">identity</a></code></li>
+<li><code><a title="gopy.matrix.matrix_class.Matrix.inverse" href="#gopy.matrix.matrix_class.Matrix.inverse">inverse</a></code></li>
+<li><code><a title="gopy.matrix.matrix_class.Matrix.is_invertable" href="#gopy.matrix.matrix_class.Matrix.is_invertable">is_invertable</a></code></li>
+<li><code><a title="gopy.matrix.matrix_class.Matrix.is_square" href="#gopy.matrix.matrix_class.Matrix.is_square">is_square</a></code></li>
+<li><code><a title="gopy.matrix.matrix_class.Matrix.minors" href="#gopy.matrix.matrix_class.Matrix.minors">minors</a></code></li>
+<li><code><a title="gopy.matrix.matrix_class.Matrix.num_columns" href="#gopy.matrix.matrix_class.Matrix.num_columns">num_columns</a></code></li>
+<li><code><a title="gopy.matrix.matrix_class.Matrix.num_rows" href="#gopy.matrix.matrix_class.Matrix.num_rows">num_rows</a></code></li>
+<li><code><a title="gopy.matrix.matrix_class.Matrix.order" href="#gopy.matrix.matrix_class.Matrix.order">order</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
