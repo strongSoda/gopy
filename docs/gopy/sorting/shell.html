@@ -1,49 +1,53 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <meta http-equiv="content-type" content="text/html;charset=utf-8">
-  <title>shell.py</title>
-  <link rel="stylesheet" href="../../pycco.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.1" />
+<title>gopy.sorting.shell API documentation</title>
+<meta name="description" content="Shell sort is a highly efficient sorting algorithm and is based on insertion sort algorithm.
+This algorithm avoids large shifts as in case of …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
 </head>
 <body>
-<div id='container'>
-  <div id="background"></div>
-  <div class='section'>
-    <div class='docs'><h1>shell.py</h1></div>
-  </div>
-  <div class='clearall'>
-  <div class='section' id='section-0'>
-    <div class='docs'>
-      <div class='octowrap'>
-        <a class='octothorpe' href='#section-0'>#</a>
-      </div>
-      <p>Shell sort is a highly efficient sorting algorithm and is based on insertion sort algorithm. 
-This algorithm avoids large shifts as in case of insertion sort, if the smaller value is to 
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>gopy.sorting.shell</code></h1>
+</header>
+<section id="section-intro">
+<p>Shell sort is a highly efficient sorting algorithm and is based on insertion sort algorithm.
+This algorithm avoids large shifts as in case of insertion sort, if the smaller value is to
 the far right and has to be moved to the far left.</p>
-<p>This algorithm uses insertion sort on a widely spread elements, first to sort them and then 
-sorts the less widely spaced elements. This spacing is termed as interval. This interval is 
-calculated based on Knuth&rsquo;s formula as −</p>
-<p>Knuth&rsquo;s Formula
+<p>This algorithm uses insertion sort on a widely spread elements, first to sort them and then
+sorts the less widely spaced elements. This spacing is termed as interval. This interval is
+calculated based on Knuth's formula as −</p>
+<p>Knuth's Formula
 h = h * 3 + 1
 where −
-   h is interval with initial value 1</p>
-<p>This algorithm is quite efficient for medium-sized data sets as its average and worst-case 
-complexity of this algorithm depends on the gap sequence the best known is Ο(n), where n is 
+h is interval with initial value 1</p>
+<p>This algorithm is quite efficient for medium-sized data sets as its average and worst-case
+complexity of this algorithm depends on the gap sequence the best known is Ο(n), where n is
 the number of items. And the worst case space complexity is O(n).</p>
-<h3>Algorithm</h3>
+<h3 id="algorithm">Algorithm</h3>
 <p>Following is the algorithm for shell sort.</p>
 <p>Step 1 − Initialize the value of h
 Step 2 − Divide the list into smaller sub-list of equal interval h
 Step 3 − Sort these sub-lists using insertion sort
 Step 3 − Repeat until complete list is sorted</p>
-<h3>Pseudocode</h3>
+<h3 id="pseudocode">Pseudocode</h3>
 <p>Following is the pseudocode for shell sort.</p>
 <pre><code class="python">procedure shellSort()
    A : array of items 
 
    /* calculate interval*/
    while interval &lt; A.length /3 do:
-      interval = interval * 3 + 1       
+      interval = interval * 3 + 1           
    end while
 
    while interval &gt; 0 do:
@@ -72,76 +76,197 @@ Step 3 − Repeat until complete list is sorted</p>
 
 end procedure
 </code></pre>
-    </div>
-    <div class='code'>
-      <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gaps</span><span class="p">(</span><span class="n">size</span><span class="p">):</span></pre></div>
-    </div>
-  </div>
-  <div class='clearall'></div>
-  <div class='section' id='section-1'>
-    <div class='docs'>
-      <div class='octowrap'>
-        <a class='octothorpe' href='#section-1'>#</a>
-      </div>
-      <p>uses the gap sequence 2^k - 1: 1, 3, 7, 15, 31, &hellip;</p>
-    </div>
-    <div class='code'>
-      <div class="highlight"><pre>    <span class="n">length</span> <span class="o">=</span> <span class="n">size</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="k">yield</span> <span class="mi">2</span><span class="o">**</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span></pre></div>
-    </div>
-  </div>
-  <div class='clearall'></div>
-  <div class='section' id='section-2'>
-    <div class='docs'>
-      <div class='octowrap'>
-        <a class='octothorpe' href='#section-2'>#</a>
-      </div>
-      
-    </div>
-    <div class='code'>
-      <div class="highlight"><pre><span class="k">def</span> <span class="nf">shell_sort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span></pre></div>
-    </div>
-  </div>
-  <div class='clearall'></div>
-  <div class='section' id='section-3'>
-    <div class='docs'>
-      <div class='octowrap'>
-        <a class='octothorpe' href='#section-3'>#</a>
-      </div>
-      
-    </div>
-    <div class='code'>
-      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">insertion_sort_with_gap</span><span class="p">(</span><span class="n">gap</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">gap</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)):</span>
-            <span class="n">temp</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-            <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">gap</span>
-            <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">temp</span> <span class="o">&lt;</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="p">]):</span>
-                <span class="n">array</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="n">gap</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
-                <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">-</span> <span class="n">gap</span>
-            <span class="n">array</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="n">gap</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span>
- 
-    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gaps</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)):</span>
-        <span class="n">insertion_sort_with_gap</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="n">array</span></pre></div>
-    </div>
-  </div>
-  <div class='clearall'></div>
-  <div class='section' id='section-4'>
-    <div class='docs'>
-      <div class='octowrap'>
-        <a class='octothorpe' href='#section-4'>#</a>
-      </div>
-      
-    </div>
-    <div class='code'>
-      <div class="highlight"><pre><span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">shell_sort</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+Shell sort is a highly efficient sorting algorithm and is based on insertion sort algorithm. 
+This algorithm avoids large shifts as in case of insertion sort, if the smaller value is to 
+the far right and has to be moved to the far left.
 
-</pre></div>
-    </div>
-  </div>
-  <div class='clearall'></div>
+This algorithm uses insertion sort on a widely spread elements, first to sort them and then 
+sorts the less widely spaced elements. This spacing is termed as interval. This interval is 
+calculated based on Knuth&#39;s formula as −
+
+Knuth&#39;s Formula
+h = h * 3 + 1
+where −
+   h is interval with initial value 1
+
+This algorithm is quite efficient for medium-sized data sets as its average and worst-case 
+complexity of this algorithm depends on the gap sequence the best known is Ο(n), where n is 
+the number of items. And the worst case space complexity is O(n).
+
+### Algorithm
+
+Following is the algorithm for shell sort.
+
+Step 1 − Initialize the value of h
+Step 2 − Divide the list into smaller sub-list of equal interval h
+Step 3 − Sort these sub-lists using insertion sort
+Step 3 − Repeat until complete list is sorted
+
+### Pseudocode
+
+Following is the pseudocode for shell sort.
+
+```python
+procedure shellSort()
+   A : array of items 
+        
+   /* calculate interval*/
+   while interval &lt; A.length /3 do:
+      interval = interval * 3 + 1           
+   end while
+   
+   while interval &gt; 0 do:
+
+      for outer = interval; outer &lt; A.length; outer ++ do:
+
+      /* select value to be inserted */
+      valueToInsert = A[outer]
+      inner = outer;
+
+         /*shift element towards right*/
+         while inner &gt; interval -1 &amp;&amp; A[inner - interval] &gt;= valueToInsert do:
+            A[inner] = A[inner - interval]
+            inner = inner - interval
+         end while
+
+      /* insert the number at hole position */
+      A[inner] = valueToInsert
+
+      end for
+
+   /* calculate interval*/
+   interval = (interval -1) /3;   
+
+   end while
+   
+end procedure
+```
+&#34;&#34;&#34;
+def gaps(size):
+    # uses the gap sequence 2^k - 1: 1, 3, 7, 15, 31, ...
+    length = size.bit_length()
+    for k in range(length - 1, 0, -1):
+        yield 2**k - 1
+ 
+ 
+def shell_sort(array):
+    def insertion_sort_with_gap(gap):
+        for i in range(gap, len(array)):
+            temp = array[i]
+            j = i - gap
+            while (j &gt;= 0 and temp &lt; array[j]):
+                array[j + gap] = array[j]
+                j = j - gap
+            array[j + gap] = temp
+ 
+    for g in gaps(len(array)):
+        insertion_sort_with_gap(g)
+    
+    return array
+
+def sort(array):
+    return shell_sort(array)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="gopy.sorting.shell.gaps"><code class="name flex">
+<span>def <span class="ident">gaps</span></span>(<span>size)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def gaps(size):
+    # uses the gap sequence 2^k - 1: 1, 3, 7, 15, 31, ...
+    length = size.bit_length()
+    for k in range(length - 1, 0, -1):
+        yield 2**k - 1</code></pre>
+</details>
+</dd>
+<dt id="gopy.sorting.shell.shell_sort"><code class="name flex">
+<span>def <span class="ident">shell_sort</span></span>(<span>array)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def shell_sort(array):
+    def insertion_sort_with_gap(gap):
+        for i in range(gap, len(array)):
+            temp = array[i]
+            j = i - gap
+            while (j &gt;= 0 and temp &lt; array[j]):
+                array[j + gap] = array[j]
+                j = j - gap
+            array[j + gap] = temp
+ 
+    for g in gaps(len(array)):
+        insertion_sort_with_gap(g)
+    
+    return array</code></pre>
+</details>
+</dd>
+<dt id="gopy.sorting.shell.sort"><code class="name flex">
+<span>def <span class="ident">sort</span></span>(<span>array)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sort(array):
+    return shell_sort(array)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul>
+<li><a href="#algorithm">Algorithm</a></li>
+<li><a href="#pseudocode">Pseudocode</a></li>
+</ul>
 </div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="gopy.sorting" href="index.html">gopy.sorting</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="gopy.sorting.shell.gaps" href="#gopy.sorting.shell.gaps">gaps</a></code></li>
+<li><code><a title="gopy.sorting.shell.shell_sort" href="#gopy.sorting.shell.shell_sort">shell_sort</a></code></li>
+<li><code><a title="gopy.sorting.shell.sort" href="#gopy.sorting.shell.sort">sort</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
 </body>
+</html>
