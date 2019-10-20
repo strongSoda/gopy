@@ -1,11 +1,15 @@
 '''
 The Rabin-Karp string matching algorithm calculates a hash value for the pattern, 
-as well as for each M-character subsequences of text to be compared. If the hash 
-values are unequal, the algorithm will determine the hash value for next M-character 
+as well as for each M-character subsequences of text to be compared. 
+
+If the hash values are unequal, the algorithm will determine the hash value for next M-character 
 sequence. If the hash values are equal, the algorithm will analyze the pattern and the
-M-character sequence. In this way, there is only one comparison per text subsequence,
+M-character sequence. 
+
+In this way, there is only one comparison per text subsequence,
 and character matching is only required when the hash values match.
 
+```
 RABIN-KARP-MATCHER (T, P, d, q)
  1. n ← length [T]
  2. m  ← length [P]
@@ -21,8 +25,9 @@ RABIN-KARP-MATCHER (T, P, d, q)
  12. then "Pattern occurs with shift" s
  13. If s < n-m
  14. then ts+1 ←  (d (ts-T [s+1]h)+T [s+m+1])mod q
+```
+### Complexity:
 
-omplexity:
 The running time of RABIN-KARP-MATCHER in the worst case scenario O ((n-m+1) m but it has a
 good average case running time. If the expected number of strong shifts is small O (1) and 
 prime q is chosen to be quite large, then the Rabin-Karp algorithm can be expected to run in 

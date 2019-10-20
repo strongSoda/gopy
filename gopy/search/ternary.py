@@ -36,9 +36,6 @@ Complexity
 O(log3N) , where N is the size of the array
 """
 
-import cProfile
-import re
-import subprocess
 
 def ternary_search(left_index, right_index, search_key, array):
     if left_index <= right_index:
@@ -61,8 +58,3 @@ def search(item,array):
     left_index = 0
     right_index = len(array) - 1
     return ternary_search(left_index, right_index, item, array)
-
-def profile(s):
-    """profiling Plotting awesome graphs..."""
-    cProfile.run(s,'test.profile')
-    return subprocess.check_output(['snakeviz', 'test.profile'])

@@ -4,20 +4,26 @@ with an element of 'S' that have previously been involved in comparison with
 some element of the pattern 'p' to be matched. i.e., backtracking on the string
 'S' never occurs.
 
-Components of KMP Algorithm:
+### Components of KMP Algorithm:
 
-1. The Prefix Function (Π): The Prefix Function, Π for a pattern encapsulates knowledge
+#### 1. The Prefix Function (Π): 
+
+The Prefix Function, Π for a pattern encapsulates knowledge
 about how the pattern matches against the shift of itself. This information can be used
 to avoid a useless shift of the pattern 'p.' In other words, this enables avoiding
 backtracking of the string 'S.'
 
-2. The KMP Matcher: With string 'S,' pattern 'p' and prefix function 'Π' as inputs, find
+#### 2. The KMP Matcher:
+
+With string 'S,' pattern 'p' and prefix function 'Π' as inputs, find
 the occurrence of 'p' in 'S' and returns the number of shifts of 'p' after which occurrences
 are found.
 
-The Prefix Function (Π)
+### The Prefix Function (Π)
+
 Following pseudo code compute the prefix function, Π:
 
+```
 COMPUTE- PREFIX- FUNCTION (P)
  1. m ←length [P]               //'p' pattern to be matched
  2. Π [1] ← 0
@@ -29,17 +35,20 @@ COMPUTE- PREFIX- FUNCTION (P)
  8. then k← k + 1
  9. Π [q] ← k
  10. Return Π
+```
 
- Running Time Analysis:
+### Running Time Analysis:
+
 In the above pseudo code for calculating the prefix function, the for loop from step 4 to step
 10  runs 'm' times. Step1 to Step3 take constant time. Hence the running time of computing
 prefix function is O (m).
 
-The KMP Matcher:
+### The KMP Matcher:
 
 The KMP Matcher with the pattern 'p,' the string 'S' and prefix function 'Π' as input, finds a
 match of p in S. Following pseudo code compute the matching component of KMP algorithm:
 
+```
 KMP-MATCHER (T, P)
  1. n ← length [T]
  2. m ← length [P]
@@ -53,16 +62,14 @@ KMP-MATCHER (T, P)
  10. If q = m                              // is all of p matched?
  11. then print "Pattern occurs with shift" i - m
  12. q ← Π [q]                          // look for the next match
+```
 
- Running Time Analysis:
+### Running Time Analysis:
+
 The for loop beginning in step 5 runs 'n' times, i.e., as long as the length of the string 'S.'
 Since step 1 to step 4 take constant times, the running time is dominated by this for the loop.
 Thus running time of the matching function is O (n).
 """
-import cProfile
-import re
-import subprocess
-import pycco
 
 def match(txt, pat): 
     M = len(pat) 
@@ -110,11 +117,3 @@ def computeLPSArray(pat, M, lps):
 			else: 
 				lps[i] = 0
 				i += 1
-
-def profile(s):
-    """profiling input search(10,[0,1,2,3,4,5,6,7,8,9,10])"""
-    cProfile.run(s,'test.profile')
-    return subprocess.check_output(['snakeviz', 'test.profile'])
-
-def doc():
-    return subprocess.check_output(['pycco','*.py'])

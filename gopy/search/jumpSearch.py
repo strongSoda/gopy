@@ -50,6 +50,7 @@ Begin
 End
 
 """
+
 import math 
   
 def search( x , arr ): 
