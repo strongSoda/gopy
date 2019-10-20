@@ -11,21 +11,26 @@ def long_description():
 
 
 setup(name='gopy',
-      version='0.6.3',
+      version='0.7.2',
       description='Python Data Structures and Algorithms',
       long_description=long_description(),
       long_description_content_type="text/markdown",
-      url='https://github.com/strongSoda/data-structures-and-algorithms',
-      download_url = 'https://github.com/strongSoda/data-structures-and-algorithms/archive/v0.6.2.tar.gz',
+      url='https://github.com/strongSoda/gopy',
+      download_url = 'https://github.com/strongSoda/gopy/archive/v0.7.0.tar.gz',
       author='Imran Khan',
       author_email="strongsoda2@gmail.com",
       license='MIT',
       packages=find_packages(),
       install_requires=[
-          'snakeviz=2.0.1',
-          'numpy'
+          'snakeviz>=2.0.1',
+          'numpy>=1.17.0'
           ],
-              'Programming Language :: Python :: 3',
+      classifiers=[
+          'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
+          'Intended Audience :: Developers',      # Define that your audience are developers
+          'Topic :: Software Development :: Build Tools',
+          'License :: OSI Approved :: MIT License',   # Again, pick a license
+          'Programming Language :: Python :: 3',      #Specify which pyhton versions that you want to support
           'Programming Language :: Python :: 3.4',
           'Programming Language :: Python :: 3.5',
           'Programming Language :: Python :: 3.6',
