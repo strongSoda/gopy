@@ -27,10 +27,10 @@ Following are the steps involved in bubble sort(for sorting a given array in asc
 
 ### Following are the Time and Space complexity for the Bubble Sort algorithm.
 
-Worst Case Time Complexity [ Big-O ]: O(n2)
-Best Case Time Complexity [Big-omega]: O(n)
-Average Time Complexity [Big-theta]: O(n2)
-Space Complexity: O(1)
+- Worst Case Time Complexity [ Big-O ]: O(n2)
+- Best Case Time Complexity [Big-omega]: O(n)
+- Average Time Complexity [Big-theta]: O(n2)
+- Space Complexity: O(1)
 
 """
 def sort(array):

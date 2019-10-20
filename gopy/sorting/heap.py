@@ -10,28 +10,28 @@ contain maximum element of Arr. After that, swap this element with the last elem
 position and then decrease the length of heap by one.
 - Repeat the step 2, until all the elements are in their correct position.
 
-### Implementation:
+### Psuedocode:
 
-```C
-    void heap_sort(int Arr[ ])
+```
+void heap_sort(int Arr[ ])
 
+{
+    int heap_size = N;
+
+    build_maxheap(Arr);
+    for(int i = N; i >= 2 ; i-- )
     {
-        int heap_size = N;
-
-        build_maxheap(Arr);
-        for(int i = N; i >= 2 ; i-- )
-        {
-            swap|(Arr[ 1 ], Arr[ i ]);
-            heap_size = heap_size - 1;
-            max_heapify(Arr, 1, heap_size);
-        }
+        swap|(Arr[ 1 ], Arr[ i ]);
+        heap_size = heap_size - 1;
+        max_heapify(Arr, 1, heap_size);
     }
- ```
+}
+```
 
 ### Complexity:
 
-max_heapify has complexity O(logN), build_maxheap has complexity O(N) and we run max_heapify 
-N−1 times in heap_sort function, therefore complexity of heap_sort function is O(NlogN).
+`max_heapify` has complexity `O(logN)`, `build_maxheap` has complexity `O(N)` and we run `max_heapify` 
+`N−1` times in `heap_sort` function, therefore complexity of `heap_sort` function is `O(NlogN)`.
 """
 def heapsort(array):
     build_max_heap(array)

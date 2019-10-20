@@ -16,6 +16,8 @@ sort, Heap Sort or Quick Sort. However, these algorithms guarantee a best case
 time complexity of O(NlogN). However, using bucket sort, the above task can be 
 completed in O(N) time.
 
+#### Psuedo Code 
+
 ```
 void bucketSort(float[] a,int n)
 {

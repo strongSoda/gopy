@@ -16,15 +16,18 @@ for average case and O(n^2) for the worst case.
 
 ### Input and Output
 
+```
 Input:
 A list of unsorted data: 108 96 23 74 12 56 85 42 13 47
 
 Output:
 Array before Sorting: 108 96 23 74 12 56 85 42 13 47
 Array after Sorting: 12 13 23 42 47 56 74 85 96 108
+```
 
 ### Algorithm
 
+```
 CombSort(array, size)
 Input: An array of data, and the total number in the array
 
@@ -46,6 +49,7 @@ Begin
       done
    done
 End
+```
 """
 def comb_sort(array):
     def swap(i, j):

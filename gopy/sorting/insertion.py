@@ -11,9 +11,11 @@ for large data sets as its average and worst case complexity are of Ο(n2),
 where n is the number of items.
 
 ### Algorithm
+
 Now we have a bigger picture of how this sorting technique works, so we can derive 
 simple steps by which we can achieve insertion sort.
 
+```
 Step 1 − If it is the first element, it is already sorted. return 1;
 Step 2 − Pick next element
 Step 3 − Compare with all elements in the sorted sub-list
@@ -21,6 +23,7 @@ Step 4 − Shift all the elements in the sorted sub-list that is greater than th
          value to be sorted
 Step 5 − Insert the value
 Step 6 − Repeat until list is sorted
+```
 
 #### Pseudocode
 
