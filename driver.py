@@ -107,9 +107,9 @@
 # print(match("ABABDABACDABABCABAB","A"))
 
 """test for knuth_morris_pratt"""
-# from gopy.profile import profile
-# from gopy.strings.knuth_morris_pratt import match 
-# print(profile('match("ABCDAADDABCABAB","A")'))
+from gopy.profile import profile
+from gopy.strings.knuth_morris_pratt import match 
+print(profile('match("ABCDAADDABCABAB","A")'))
 
 """test for 01_knapsack"""
 # values = [2,3,4]
