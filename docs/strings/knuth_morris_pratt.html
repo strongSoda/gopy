@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.1" />
+<title>gopy.strings.knuth_morris_pratt API documentation</title>
+<meta name="description" content="Knuth-Morris and Pratt introduce a linear time algorithm for the string
+matching problem. A matching time of O (n) is achieved by avoiding comparison
+…" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>gopy.strings.knuth_morris_pratt</code></h1>
+</header>
+<section id="section-intro">
+<p>Knuth-Morris and Pratt introduce a linear time algorithm for the string
+matching problem. A matching time of O (n) is achieved by avoiding comparison
+with an element of 'S' that have previously been involved in comparison with
+some element of the pattern 'p' to be matched. i.e., backtracking on the string
+'S' never occurs.</p>
+<h3 id="components-of-kmp-algorithm">Components of KMP Algorithm:</h3>
+<h4 id="1-the-prefix-function">1. The Prefix Function (Π):</h4>
+<p>The Prefix Function, Π for a pattern encapsulates knowledge
+about how the pattern matches against the shift of itself. This information can be used
+to avoid a useless shift of the pattern 'p.' In other words, this enables avoiding
+backtracking of the string 'S.'</p>
+<h4 id="2-the-kmp-matcher">2. The KMP Matcher:</h4>
+<p>With string 'S,' pattern 'p' and prefix function 'Π' as inputs, find
+the occurrence of 'p' in 'S' and returns the number of shifts of 'p' after which occurrences
+are found.</p>
+<h3 id="the-prefix-function">The Prefix Function (Π)</h3>
+<p>Following pseudo code compute the prefix function, Π:</p>
+<pre><code>COMPUTE- PREFIX- FUNCTION (P)
+ 1. m ←length [P]               //'p' pattern to be matched
+ 2. Π [1] ← 0
+ 3. k ← 0
+ 4. for q ← 2 to m
+ 5. do while k &gt; 0 and P [k + 1] ≠ P [q]
+ 6. do k ← Π [k]
+ 7. If P [k + 1] = P [q]
+ 8. then k← k + 1
+ 9. Π [q] ← k
+ 10. Return Π
+</code></pre>
+<h3 id="running-time-analysis">Running Time Analysis:</h3>
+<p>In the above pseudo code for calculating the prefix function, the for loop from step 4 to step
+10
+runs 'm' times. Step1 to Step3 take constant time. Hence the running time of computing
+prefix function is O (m).</p>
+<h3 id="the-kmp-matcher">The KMP Matcher:</h3>
+<p>The KMP Matcher with the pattern 'p,' the string 'S' and prefix function 'Π' as input, finds a
+match of p in S. Following pseudo code compute the matching component of KMP algorithm:</p>
+<pre><code>KMP-MATCHER (T, P)
+ 1. n ← length [T]
+ 2. m ← length [P]
+ 3. Π← COMPUTE-PREFIX-FUNCTION (P)
+ 4. q ← 0               // numbers of characters matched
+ 5. for i ← 1 to n      // scan S from left to right
+ 6. do while q &gt; 0 and P [q + 1] ≠ T [i]
+ 7. do q ← Π [q]                // next character does not match
+ 8. If P [q + 1] = T [i]
+ 9. then q ← q + 1              // next character matches
+ 10. If q = m                              // is all of p matched?
+ 11. then print &quot;Pattern occurs with shift&quot; i - m
+ 12. q ← Π [q]                          // look for the next match
+</code></pre>
+<h3 id="running-time-analysis_1">Running Time Analysis:</h3>
+<p>The for loop beginning in step 5 runs 'n' times, i.e., as long as the length of the string 'S.'
+Since step 1 to step 4 take constant times, the running time is dominated by this for the loop.
+Thus running time of the matching function is O (n).</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Knuth-Morris and Pratt introduce a linear time algorithm for the string
+matching problem. A matching time of O (n) is achieved by avoiding comparison
+with an element of &#39;S&#39; that have previously been involved in comparison with
+some element of the pattern &#39;p&#39; to be matched. i.e., backtracking on the string
+&#39;S&#39; never occurs.
+
+### Components of KMP Algorithm:
+
+#### 1. The Prefix Function (Π): 
+
+The Prefix Function, Π for a pattern encapsulates knowledge
+about how the pattern matches against the shift of itself. This information can be used
+to avoid a useless shift of the pattern &#39;p.&#39; In other words, this enables avoiding
+backtracking of the string &#39;S.&#39;
+
+#### 2. The KMP Matcher:
+
+With string &#39;S,&#39; pattern &#39;p&#39; and prefix function &#39;Π&#39; as inputs, find
+the occurrence of &#39;p&#39; in &#39;S&#39; and returns the number of shifts of &#39;p&#39; after which occurrences
+are found.
+
+### The Prefix Function (Π)
+
+Following pseudo code compute the prefix function, Π:
+
+```
+COMPUTE- PREFIX- FUNCTION (P)
+ 1. m ←length [P]               //&#39;p&#39; pattern to be matched
+ 2. Π [1] ← 0
+ 3. k ← 0
+ 4. for q ← 2 to m
+ 5. do while k &gt; 0 and P [k + 1] ≠ P [q]
+ 6. do k ← Π [k]
+ 7. If P [k + 1] = P [q]
+ 8. then k← k + 1
+ 9. Π [q] ← k
+ 10. Return Π
+```
+
+### Running Time Analysis:
+
+In the above pseudo code for calculating the prefix function, the for loop from step 4 to step
+10  runs &#39;m&#39; times. Step1 to Step3 take constant time. Hence the running time of computing
+prefix function is O (m).
+
+### The KMP Matcher:
+
+The KMP Matcher with the pattern &#39;p,&#39; the string &#39;S&#39; and prefix function &#39;Π&#39; as input, finds a
+match of p in S. Following pseudo code compute the matching component of KMP algorithm:
+
+```
+KMP-MATCHER (T, P)
+ 1. n ← length [T]
+ 2. m ← length [P]
+ 3. Π← COMPUTE-PREFIX-FUNCTION (P)
+ 4. q ← 0               // numbers of characters matched
+ 5. for i ← 1 to n      // scan S from left to right
+ 6. do while q &gt; 0 and P [q + 1] ≠ T [i]
+ 7. do q ← Π [q]                // next character does not match
+ 8. If P [q + 1] = T [i]
+ 9. then q ← q + 1              // next character matches
+ 10. If q = m                              // is all of p matched?
+ 11. then print &#34;Pattern occurs with shift&#34; i - m
+ 12. q ← Π [q]                          // look for the next match
+```
+
+### Running Time Analysis:
+
+The for loop beginning in step 5 runs &#39;n&#39; times, i.e., as long as the length of the string &#39;S.&#39;
+Since step 1 to step 4 take constant times, the running time is dominated by this for the loop.
+Thus running time of the matching function is O (n).
+&#34;&#34;&#34;
+
+def match(txt, pat): 
+    M = len(pat) 
+    N = len(txt) 
+    # create lps[] that will hold the longest prefix suffix 
+    # values for pattern 
+    lps = [0]*M 
+    j = 0 # index for pat[] 
+    #Preprocess the pattern (calculate lps[] array) 
+    computeLPSArray(pat, M, lps) 
+    i = 0 # index for txt[] 
+    pos = []
+    while i &lt; N: 
+        if pat[j] == txt[i]: 
+            i += 1
+            j += 1
+        if j == M: 
+            pos.append(i-j)
+            j = lps[j-1] 
+        # mismatch after j matches 
+        elif i &lt; N and pat[j] != txt[i]: 
+            # Do not match lps[0..lps[j-1]] characters, 
+            # they will match anyway 
+            if j != 0: 
+                j = lps[j-1] 
+            else: 
+                i += 1
+    if len(pos):
+        return pos
+    else:
+        return &#34;No Match Found&#34;
+
+def computeLPSArray(pat, M, lps): 
+        len = 0 # length of the previous longest prefix suffix 
+        lps[0] # lps[0] is always 0 
+        i = 1
+        while i &lt; M: 
+                if pat[i]== pat[len]: 
+                        len += 1
+                        lps[i] = len
+                        i += 1
+                else: 
+                        if len != 0: 
+                                len = lps[len-1] 
+                        else: 
+                                lps[i] = 0
+                                i += 1</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="gopy.strings.knuth_morris_pratt.computeLPSArray"><code class="name flex">
+<span>def <span class="ident">computeLPSArray</span></span>(<span>pat, M, lps)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def computeLPSArray(pat, M, lps): 
+        len = 0 # length of the previous longest prefix suffix 
+        lps[0] # lps[0] is always 0 
+        i = 1
+        while i &lt; M: 
+                if pat[i]== pat[len]: 
+                        len += 1
+                        lps[i] = len
+                        i += 1
+                else: 
+                        if len != 0: 
+                                len = lps[len-1] 
+                        else: 
+                                lps[i] = 0
+                                i += 1</code></pre>
+</details>
+</dd>
+<dt id="gopy.strings.knuth_morris_pratt.match"><code class="name flex">
+<span>def <span class="ident">match</span></span>(<span>txt, pat)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def match(txt, pat): 
+    M = len(pat) 
+    N = len(txt) 
+    # create lps[] that will hold the longest prefix suffix 
+    # values for pattern 
+    lps = [0]*M 
+    j = 0 # index for pat[] 
+    #Preprocess the pattern (calculate lps[] array) 
+    computeLPSArray(pat, M, lps) 
+    i = 0 # index for txt[] 
+    pos = []
+    while i &lt; N: 
+        if pat[j] == txt[i]: 
+            i += 1
+            j += 1
+        if j == M: 
+            pos.append(i-j)
+            j = lps[j-1] 
+        # mismatch after j matches 
+        elif i &lt; N and pat[j] != txt[i]: 
+            # Do not match lps[0..lps[j-1]] characters, 
+            # they will match anyway 
+            if j != 0: 
+                j = lps[j-1] 
+            else: 
+                i += 1
+    if len(pos):
+        return pos
+    else:
+        return &#34;No Match Found&#34;</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul>
+<li><a href="#components-of-kmp-algorithm">Components of KMP Algorithm:</a><ul>
+<li><a href="#1-the-prefix-function">1. The Prefix Function (Π):</a></li>
+<li><a href="#2-the-kmp-matcher">2. The KMP Matcher:</a></li>
+</ul>
+</li>
+<li><a href="#the-prefix-function">The Prefix Function (Π)</a></li>
+<li><a href="#running-time-analysis">Running Time Analysis:</a></li>
+<li><a href="#the-kmp-matcher">The KMP Matcher:</a></li>
+<li><a href="#running-time-analysis_1">Running Time Analysis:</a></li>
+</ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="gopy.strings" href="index.html">gopy.strings</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="gopy.strings.knuth_morris_pratt.computeLPSArray" href="#gopy.strings.knuth_morris_pratt.computeLPSArray">computeLPSArray</a></code></li>
+<li><code><a title="gopy.strings.knuth_morris_pratt.match" href="#gopy.strings.knuth_morris_pratt.match">match</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

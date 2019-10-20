@@ -11,12 +11,12 @@ def long_description():
 
 
 setup(name='gopy',
-      version='0.7.2',
+      version='0.7.3',
       description='Python Data Structures and Algorithms',
       long_description=long_description(),
       long_description_content_type="text/markdown",
       url='https://github.com/strongSoda/gopy',
-      download_url = 'https://github.com/strongSoda/gopy/archive/v0.7.0.tar.gz',
+      download_url = 'https://github.com/strongSoda/gopy/archive/v0.7.3.tar.gz',
       author='Imran Khan',
       author_email="strongsoda2@gmail.com",
       license='MIT',
