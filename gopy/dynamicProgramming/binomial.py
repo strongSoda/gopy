@@ -50,5 +50,3 @@ def bino(n,k):
             else:
                 C[i][j] = C[i-1][j] + C[i-1][j-1]
     return C[n][k]
-
-print(bino(4,2))
