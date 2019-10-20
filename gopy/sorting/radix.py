@@ -9,7 +9,10 @@ pass, all the numbers are sorted on the least significant digit and combined in 
 Then on the second pass, the entire numbers are sorted again on the second least significant 
 digits and combined in an array and so on.
 
-Algorithm: Radix-Sort (list, n) 
+### Algorithm: 
+
+```
+Radix-Sort (list, n) 
 shift = 1 
 for loop = 1 to keysize do 
    for entry = 1 to n do 
@@ -17,6 +20,7 @@ for loop = 1 to keysize do
       append (bucket[bucketnumber], list[entry]) 
    list = combinebuckets() 
    shift = shift * 10 
+```
 
 ### Analysis
 Each key is looked at once for each digit (or letter if the keys are alphabetic) of the longest 

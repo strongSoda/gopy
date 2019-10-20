@@ -9,8 +9,9 @@ for the array (in which you will search for an element) to be sorted before you 
 the search. In this search, after each iteration it neglects ⅓ part of the array and
 repeats the same operations on the remaining ⅔.
 
-implementation
+### Psuedo Code
 
+```
 int ternary_search(int l,int r, int x)
 {
     if(r>=l)
@@ -31,14 +32,13 @@ int ternary_search(int l,int r, int x)
     }
     return -1;
 }
+```
 
-Complexity
+### Complexity
+
 O(log3N) , where N is the size of the array
 """
 
-import cProfile
-import re
-import subprocess
 
 def ternary_search(left_index, right_index, search_key, array):
     if left_index <= right_index:
@@ -61,8 +61,3 @@ def search(item,array):
     left_index = 0
     right_index = len(array) - 1
     return ternary_search(left_index, right_index, item, array)
-
-def profile(s):
-    """profiling Plotting awesome graphs..."""
-    cProfile.run(s,'test.profile')
-    return subprocess.check_output(['snakeviz', 'test.profile'])

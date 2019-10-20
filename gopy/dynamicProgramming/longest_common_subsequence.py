@@ -1,81 +1,64 @@
 """
-LCS Problem Statement: Given two sequences, find the length of longest subsequence present in both of them.
-A subsequence is a sequence that appears in the same relative order, but not necessarily continuous.
-Example:"abc", "abg" are subsequences of "abcdefgh".
+### Longest Common Subsequence
+
+If a set of sequences are given, the longest common subsequence problem is to find a common subsequence of all the sequences that is of maximal length.
+
+The longest common subsequence problem is a classic computer science problem, the basis of data comparison programs such as the diff-utility, and has applications in bioinformatics. It is also widely used by revision control systems, such as SVN and Git, for reconciling multiple changes made to a revision-controlled collection of files.
+
+### Naïve Method
+
+Let X be a sequence of length m and Y a sequence of length n. Check for every subsequence of X whether it is a subsequence of Y, and return the longest common subsequence found.
+
+There are 2m subsequences of X. Testing sequences whether or not it is a subsequence of Y takes O(n) time. Thus, the naïve algorithm would take O(n2m) time.
+
+### Dynamic Programming
+
+Let X = < x1, x2, x3,…, xm > and Y = < y1, y2, y3,…, yn > be the sequences. To compute the length of an element the following algorithm is used.
+
+In this procedure, table C[m, n] is computed in row major order and another table B[m,n] is computed to construct optimal solution.
+
+### Algorithm:
+
+```
+LCS-Length-Table-Formulation (X, Y)
+m := length(X) 
+n := length(Y) 
+for i = 1 to m do 
+   C[i, 0] := 0 
+for j = 1 to n do 
+   C[0, j] := 0 
+for i = 1 to m do 
+   for j = 1 to n do 
+      if xi = yj 
+         C[i, j] := C[i - 1, j - 1] + 1 
+         B[i, j] := ‘D’ 
+      else 
+         if C[i -1, j] ≥ C[i, j -1] 
+            C[i, j] := C[i - 1, j] + 1 
+            B[i, j] := ‘U’ 
+         else 
+         C[i, j] := C[i, j - 1]
+         B[i, j] := ‘L’ 
+return C and B
+```
+
+### Analysis
+
+To populate the table, the outer for loop iterates m times and the inner for loop iterates n times. Hence, the complexity of the algorithm is O(m, n), where m and n are the length of two strings.
 """
-
-
-def longest_common_subsequence(x: str, y: str):
-    """
-    Finds the longest common subsequence between two strings. Also returns the
-    The subsequence found
-
-    Parameters
-    ----------
-
-    x: str, one of the strings
-    y: str, the other string
-
-    Returns
-    -------
-    L[m][n]: int, the length of the longest subsequence. Also equal to len(seq)
-    Seq: str, the subsequence found
-
-    >>> longest_common_subsequence("programming", "gaming")
-    (6, 'gaming')
-    >>> longest_common_subsequence("physics", "smartphone")
-    (2, 'ph')
-    >>> longest_common_subsequence("computer", "food")
-    (1, 'o')
-    """
-    # find the length of strings
-
-    assert x is not None
-    assert y is not None
-
-    m = len(x)
-    n = len(y)
-
-    # declaring the array for storing the dp values
-    L = [[0] * (n + 1) for _ in range(m + 1)]
-
-    for i in range(1, m + 1):
-        for j in range(1, n + 1):
-            if x[i - 1] == y[j - 1]:
-                match = 1
+def lcs(x,y):
+    m= len(x)
+    n= len(y)
+    # print(m,n)
+    k = [[0 for i in range(n)] for i in range(m)]
+    for i in range(m):
+        for j in range(n):
+            if i==0 or y==0:
+                # print(i,j)
+                k[i][j] = 0
+            if x[i-1]==y[j-1]:
+                k[i][j] = 1+k[i-1][j-1]
             else:
-                match = 0
-
-            L[i][j] = max(L[i - 1][j], L[i][j - 1], L[i - 1][j - 1] + match)
-
-    seq = ""
-    i, j = m, n
-    while i > 0 and j > 0:
-        if x[i - 1] == y[j - 1]:
-            match = 1
-        else:
-            match = 0
-
-        if L[i][j] == L[i - 1][j - 1] + match:
-            if match == 1:
-                seq = x[i - 1] + seq
-            i -= 1
-            j -= 1
-        elif L[i][j] == L[i - 1][j]:
-            i -= 1
-        else:
-            j -= 1
-
-    return L[m][n], seq
-
-
-if __name__ == "__main__":
-    a = "AGGTAB"
-    b = "GXTXAYB"
-    expected_ln = 4
-    expected_subseq = "GTAB"
-
-    ln, subseq = longest_common_subsequence(a, b)
-    assert expected_ln == ln
-    assert expected_subseq == subseq
-    print("len =", ln, ", sub-sequence =", subseq)
+                k[i][j] = max(k[i-1][j], k[i][j-1])
+    
+    return k[m-1][n-1]

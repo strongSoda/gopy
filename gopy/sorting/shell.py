@@ -20,10 +20,12 @@ the number of items. And the worst case space complexity is O(n).
 
 Following is the algorithm for shell sort.
 
+```
 Step 1 − Initialize the value of h
 Step 2 − Divide the list into smaller sub-list of equal interval h
 Step 3 − Sort these sub-lists using insertion sort
 Step 3 − Repeat until complete list is sorted
+```
 
 ### Pseudocode
 

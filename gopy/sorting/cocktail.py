@@ -15,9 +15,16 @@ The process continues until the list becomes unsorted.
 
 ### Complexity
 
-**Complexity**	        **Best Case**	**Average Case**	**Worst Case**
-**Time Complexity**	        O(n2)	        O(n2)	            O(n2)
-**Space Complexity**	    O(1)            O(1)                O(1)
+#### Best Case	
+**Time Complexity**	        O(n2)
+
+#### Average Case
+**Time Complexity**	        O(n2)
+
+#### Worst Case
+**Time Complexity**	        O(n2)
+
+**Space Complexity**	    O(1) 
 
 """
 def cocktail_shaker_sort(array):

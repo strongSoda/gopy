@@ -7,9 +7,7 @@ array holds values greater than the pivot value.
 Quick sort partitions an array and then calls itself recursively twice to sort the two resulting 
 subarrays. This algorithm is quite efficient for large-sized data sets as its average and worst 
 case complexity are of Ο(n2), where n is the number of items.
-"""
 
-"""
 ### Quick Sort Algorithm
 
 Using pivot algorithm recursively, we end up with smaller possible partitions. Each partition is 
@@ -21,16 +19,7 @@ Step 2 − partition the array using pivot value
 Step 3 − quicksort left partition recursively
 Step 4 − quicksort right partition recursively
 ```
-"""
-def quicksort(array, start, end):
-    '''Sorts the list from indexes start to end - 1 inclusive.'''
-    if end - start > 1:
-        p = partition(array, start, end)
-        quicksort(array, start, p)
-        quicksort(array, p + 1, end)
-    return array 
 
-"""
 
 ### Quick Sort Pivot Algorithm
 
@@ -59,7 +48,16 @@ Step 7 − if both step 5 and step 6 does not match
 Step 8 − if left ≥ right, the point where they met 
          is new pivot
 ```
+
 """
+def quicksort(array, start, end):
+    '''Sorts the list from indexes start to end - 1 inclusive.'''
+    if end - start > 1:
+        p = partition(array, start, end)
+        quicksort(array, start, p)
+        quicksort(array, p + 1, end)
+    return array 
+
 def partition(array, start, end):
     pivot = array[start]
     i = start + 1
